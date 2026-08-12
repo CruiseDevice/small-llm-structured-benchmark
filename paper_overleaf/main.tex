@@ -30,7 +30,7 @@
        but Reveals a Scale-Dependent Semantic Gap}
 
 % Authors: fill in when submitting
-\author{Anonymous}
+\author{Akash Chavan}
 
 \begin{document}
 \maketitle
@@ -110,14 +110,15 @@ The novelty is the \emph{interaction term}: CD $\times$ model scale.
 \begin{table}[h]
 \centering
 \small
-\begin{tabular}{lccc}
+\setlength{\tabcolsep}{4pt}
+\begin{tabular}{@{}lccc@{}}
 \toprule
-\textbf{Work} & \textbf{CD?} & \textbf{Size ladder?} & \textbf{Focus} \\
+\textbf{Work} & \textbf{CD?} & \textbf{Scale?} & \textbf{Focus} \\
 \midrule
 JSONSchemaBench & \checkmark & $\times$ & Framework efficiency \\
-STED & $\times$ & $\times$ & Temperature $\times$ consistency \\
-Renze \& Guven & $\times$ & $\times$ & Temperature $\times$ accuracy \\
-\textbf{This work} & \checkmark & \checkmark & CD $\times$ scale interaction \\
+STED & $\times$ & $\times$ & Temp.\ $\times$ consist. \\
+Renze \& Guven & $\times$ & $\times$ & Temp.\ $\times$ accuracy \\
+\textbf{This work} & \checkmark & \checkmark & CD $\times$ scale \\
 \bottomrule
 \end{tabular}
 \caption{Positioning relative to prior work.}
@@ -230,13 +231,14 @@ The three failure archetypes emerge from our baseline study (Table~\ref{tab:arch
 \begin{table}[h]
 \centering
 \small
-\begin{tabular}{lll}
+\setlength{\tabcolsep}{4pt}
+\begin{tabular}{@{}llc@{}}
 \toprule
-\textbf{Archetype} & \textbf{Example} & \textbf{CD prediction} \\
+\textbf{Archetype} & \textbf{Example} & \textbf{CD?} \\
 \midrule
 Type coercion & \texttt{"4.98"} vs \texttt{4.98} & Rescuable \\
-Structural misplacement & Missing required field & Rescuable \\
-Instruction-semantic & Missing function call & Resistant \\
+Structural misplacement & Missing field & Rescuable \\
+Instruction-semantic & Missing call & Resistant \\
 \bottomrule
 \end{tabular}
 \caption{Failure archetypes and predicted CD-rescuability.}
@@ -247,10 +249,10 @@ Instruction-semantic & Missing function call & Resistant \\
 \label{sec:structural}
 
 % Figure 1 reference
-\begin{figure}[t]
+\begin{figure}[tbp]
 \centering
 \includegraphics[width=0.95\columnwidth]{figures/fig1_schema_validity.pdf}
-\caption{Schema validity rate vs.\ model size. CD flattens the structural scaling curve to 100\% across all models. Native decoding (red) shows the baseline failure rate; both CD frameworks (blue, green) eliminate all structural failures.}
+\caption{Schema validity rate vs.~model size. CD flattens the structural scaling curve to 100\% across all models. Native decoding (red) shows the baseline failure rate; both CD frameworks (blue, green) eliminate all structural failures.}
 \label{fig:schema-curve}
 \end{figure}
 
@@ -280,7 +282,7 @@ XGrammar adds negligible overhead: 4--8\,ms compilation time and 2--4\% throughp
 Outlines incurs significant per-schema compilation cost: 1.5--4.9\,s average, peaking at 19.5\,s on complex schemas (Phi-4-mini tokenizer).
 Both frameworks preserve generation throughput once compiled.
 
-\begin{figure}[t]
+\begin{figure}[tbp]
 \centering
 \includegraphics[width=0.95\columnwidth]{figures/fig4_overhead.pdf}
 \caption{CD framework overhead. (a) Schema compilation time: XGrammar is near-zero ($<$10\,ms); Outlines ranges from 1.5--4.9\,s average. (b) Generation throughput is preserved across all conditions.}
