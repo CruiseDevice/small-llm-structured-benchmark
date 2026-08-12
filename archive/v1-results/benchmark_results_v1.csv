@@ -1,0 +1,212 @@
+1|model,task_id,difficulty,json_valid,schema_valid,latency_ms,tokens_per_sec,failure_reason
+2|qwen3-0.6b-nothink,json_simple_person,easy,true,true,1331.9,34.5,
+3|qwen3-0.6b-nothink,json_simple_product,easy,true,true,1376.6,34.1,
+4|qwen3-0.6b-nothink,json_nested_address,medium,true,true,2080.8,34.1,
+5|qwen3-0.6b-nothink,json_array_orders,medium,true,true,4210.1,34.2,
+6|qwen3-0.6b-nothink,json_complex_api,hard,true,true,5274.2,35.5,
+7|qwen3-0.6b-nothink,schema_weather,easy,true,true,1456.8,35.0,
+8|qwen3-0.6b-nothink,schema_database_record,medium,true,true,2541.8,35.0,
+9|qwen3-0.6b-nothink,schema_config_file,hard,true,true,4348.1,34.5,
+10|qwen3-0.6b-nothink,funcall_get_weather,easy,true,true,758.7,34.3,
+11|qwen3-0.6b-nothink,funcall_search_multi,medium,true,false,1427.1,34.3,returned 1 function call instead of 2; array schema expected single object returned
+12|qwen3-0.6b-nothink,funcall_database_query,hard,true,true,1600.6,34.4,
+13|qwen3-0.6b-nothink,extract_business_card,easy,true,true,2003.4,34.4,
+14|qwen3-0.6b-nothink,extract_receipt,medium,true,false,5422.9,34.1,price values as strings instead of numbers (type mismatch)
+15|qwen3-0.6b-nothink,extract_api_log,hard,true,true,4385.6,34.4,
+16|qwen3-4b-instruct,json_simple_person,easy,true,true,1246.7,26.5,
+17|qwen3-4b-instruct,json_simple_product,easy,true,true,1289.5,26.4,
+18|qwen3-4b-instruct,json_nested_address,medium,true,true,1965.7,25.9,
+19|qwen3-4b-instruct,json_array_orders,medium,true,true,3579.9,26.0,
+20|qwen3-4b-instruct,json_complex_api,hard,true,true,3490.9,26.9,
+21|qwen3-4b-instruct,schema_weather,easy,true,true,1171.6,26.5,
+22|qwen3-4b-instruct,schema_database_record,medium,true,true,2186.2,27.0,
+23|qwen3-4b-instruct,schema_config_file,hard,true,true,3815.1,25.9,
+24|qwen3-4b-instruct,funcall_get_weather,easy,true,true,700.2,25.7,
+25|qwen3-4b-instruct,funcall_search_multi,medium,true,true,3016.8,25.9,
+26|qwen3-4b-instruct,funcall_database_query,hard,true,true,1825.3,25.7,
+27|qwen3-4b-instruct,extract_business_card,easy,true,true,2361.6,25.8,
+28|qwen3-4b-instruct,extract_receipt,medium,true,true,6811.9,26.0,
+29|qwen3-4b-instruct,extract_api_log,hard,true,true,5425.6,26.4,
+30|phi-4-mini,json_simple_person,easy,true,true,485.2,78.3,
+31|phi-4-mini,json_simple_product,easy,true,true,476.3,77.7,
+32|phi-4-mini,json_nested_address,medium,true,true,741.0,78.3,
+33|phi-4-mini,json_array_orders,medium,true,true,1784.9,78.4,
+34|phi-4-mini,json_complex_api,hard,true,true,2229.6,78.5,
+35|phi-4-mini,schema_weather,easy,true,false,1085.2,78.3,output JSON Schema structure instead of data — values wrapped in properties object
+36|phi-4-mini,schema_database_record,medium,true,true,900.7,77.7,
+37|phi-4-mini,schema_config_file,hard,true,true,1826.8,78.3,
+38|phi-4-mini,funcall_get_weather,easy,true,true,387.7,77.4,
+39|phi-4-mini,funcall_search_multi,medium,true,true,947.5,78.1,
+40|phi-4-mini,funcall_database_query,hard,true,true,849.3,77.7,
+41|phi-4-mini,extract_business_card,easy,true,true,706.8,77.8,
+42|phi-4-mini,extract_receipt,medium,true,false,2052.7,77.9,price values as strings with $ prefix ($4.98 $20.49) instead of numbers
+43|phi-4-mini,extract_api_log,hard,true,true,1663.2,78.2,
+44|llama-3.2-1b-instruct,json_simple_person,easy,true,true,505.2,79.2,
+45|llama-3.2-1b-instruct,json_simple_product,easy,true,true,453.8,81.5,
+46|llama-3.2-1b-instruct,json_nested_address,medium,true,true,735.4,81.6,
+47|llama-3.2-1b-instruct,json_array_orders,medium,true,true,1767.6,82.6,
+48|llama-3.2-1b-instruct,json_complex_api,hard,true,false,2150.0,82.3,missing required property 'metadata'
+49|llama-3.2-1b-instruct,schema_weather,easy,true,true,506.6,80.9,
+50|llama-3.2-1b-instruct,schema_database_record,medium,true,false,824.4,82.5,included 'additionalProperties': false as a data field — schema keyword leaked into output
+51|llama-3.2-1b-instruct,schema_config_file,hard,true,false,1747.1,81.3,missing required property 'logging'
+52|llama-3.2-1b-instruct,funcall_get_weather,easy,true,true,303.9,82.3,
+53|llama-3.2-1b-instruct,funcall_search_multi,medium,true,false,330.3,81.7,returned single object instead of array; also only 1 function call instead of 2
+54|llama-3.2-1b-instruct,funcall_database_query,hard,true,true,539.5,81.6,
+55|llama-3.2-1b-instruct,extract_business_card,easy,true,true,706.2,82.1,
+56|llama-3.2-1b-instruct,extract_receipt,medium,true,true,2037.8,81.9,
+57|llama-3.2-1b-instruct,extract_api_log,hard,true,true,1445.8,82.3,
+58|llama-3.2-3b-instruct,json_simple_person,easy,true,true,536.2,46.6,
+59|llama-3.2-3b-instruct,json_simple_product,easy,true,true,600.5,48.3,
+60|llama-3.2-3b-instruct,json_nested_address,medium,true,true,919.2,49.0,
+61|llama-3.2-3b-instruct,json_array_orders,medium,false,false,2888.0,48.8,truncated output — incomplete JSON array
+62|llama-3.2-3b-instruct,json_complex_api,hard,true,false,2757.5,49.0,users array is not of type 'object' — nested structure mismatch
+63|llama-3.2-3b-instruct,schema_weather,easy,true,true,581.4,46.4,
+64|llama-3.2-3b-instruct,schema_database_record,medium,true,false,1006.9,48.7,id value '4a3b2c1d0' does not match regex ^[a-f0-9]{8}$ — too many chars
+65|llama-3.2-3b-instruct,schema_config_file,hard,false,false,1607.5,48.5,could not extract valid JSON — corrupted output
+66|llama-3.2-3b-instruct,funcall_get_weather,easy,true,true,511.7,48.9,
+67|llama-3.2-3b-instruct,funcall_search_multi,medium,false,false,1379.5,48.6,concatenated two JSON objects with semicolon separator — invalid JSON
+68|llama-3.2-3b-instruct,funcall_database_query,hard,true,true,865.4,48.5,
+69|llama-3.2-3b-instruct,extract_business_card,easy,true,true,987.2,48.6,
+70|llama-3.2-3b-instruct,extract_receipt,medium,true,true,2613.8,49.0,
+71|llama-3.2-3b-instruct,extract_api_log,hard,true,true,1897.8,47.9,
+72|gemma-4-e2b-it,json_simple_person,easy,true,true,1726.6,20.3,
+73|gemma-4-e2b-it,json_simple_product,easy,true,true,1740.9,20.7,
+74|gemma-4-e2b-it,json_nested_address,medium,true,true,2496.6,20.4,
+75|gemma-4-e2b-it,json_array_orders,medium,true,true,5596.4,20.7,
+76|gemma-4-e2b-it,json_complex_api,hard,true,false,6504.3,20.8,missing required property 'metadata'
+77|gemma-4-e2b-it,schema_weather,easy,true,true,1323.7,20.4,
+78|gemma-4-e2b-it,schema_database_record,medium,true,true,3052.5,20.6,
+79|gemma-4-e2b-it,schema_config_file,hard,true,false,4963.0,20.8,'OPTIONS' is not one of allowed enum values ['GET','POST','PUT','DELETE','PATCH']
+80|gemma-4-e2b-it,funcall_get_weather,easy,true,true,946.2,20.1,
+81|gemma-4-e2b-it,funcall_search_multi,medium,false,false,3288.4,20.7,two JSON objects concatenated without array wrapper — separated by newline
+82|gemma-4-e2b-it,funcall_database_query,hard,true,true,2845.4,20.7,
+83|gemma-4-e2b-it,extract_business_card,easy,true,true,2670.3,20.6,
+84|gemma-4-e2b-it,extract_receipt,medium,true,true,6687.4,20.8,
+85|gemma-4-e2b-it,extract_api_log,hard,true,true,6664.8,20.9,
+86|gemma-4-e4b-it,json_simple_person,easy,true,true,20280.1,1.7,
+87|gemma-4-e4b-it,json_simple_product,easy,true,true,18953.2,1.7,
+88|gemma-4-e4b-it,json_nested_address,medium,true,true,29591.7,1.7,
+89|gemma-4-e4b-it,json_array_orders,medium,true,true,100258.7,1.6,
+90|gemma-4-e4b-it,json_complex_api,hard,true,false,74284.7,1.8,missing required property 'metadata'
+91|gemma-4-e4b-it,schema_weather,easy,true,true,17018.7,1.8,
+92|gemma-4-e4b-it,schema_database_record,medium,true,true,28549.0,1.8,
+93|gemma-4-e4b-it,schema_config_file,hard,true,true,50707.4,1.8,
+94|gemma-4-e4b-it,funcall_get_weather,easy,true,true,10596.6,1.8,
+95|gemma-4-e4b-it,funcall_search_multi,medium,false,false,38157.2,1.8,concatenated JSON objects without array wrapper — could not extract valid JSON
+96|gemma-4-e4b-it,funcall_database_query,hard,true,true,44546.2,1.8,
+97|gemma-4-e4b-it,extract_business_card,easy,true,true,30053.1,1.8,
+98|gemma-4-e4b-it,extract_receipt,medium,true,true,76513.8,1.8,
+99|gemma-4-e4b-it,extract_api_log,hard,true,true,75956.6,1.8,
+100|gemma-4-e4b-it-v2,json_simple_person,easy,true,true,2065.3,16.9,
+101|gemma-4-e4b-it-v2,json_simple_product,easy,true,true,1929.7,17.1,
+102|gemma-4-e4b-it-v2,json_nested_address,medium,true,true,2973.7,17.2,
+103|gemma-4-e4b-it-v2,json_array_orders,medium,true,true,9544.3,17.1,
+104|gemma-4-e4b-it-v2,json_complex_api,hard,true,false,7842.4,17.1,missing required property 'metadata'
+105|gemma-4-e4b-it-v2,schema_weather,easy,true,true,1747.8,17.2,
+106|gemma-4-e4b-it-v2,schema_database_record,medium,true,true,3060.5,17.0,
+107|gemma-4-e4b-it-v2,schema_config_file,hard,true,true,5455.9,17.0,
+108|gemma-4-e4b-it-v2,funcall_get_weather,easy,true,true,1105.6,17.2,
+109|gemma-4-e4b-it-v2,funcall_search_multi,medium,false,false,3922.8,17.1,concatenated JSON objects without array wrapper — could not extract valid JSON
+110|gemma-4-e4b-it-v2,funcall_database_query,hard,true,true,4706.0,17.0,
+111|gemma-4-e4b-it-v2,extract_business_card,easy,true,true,3209.5,17.1,
+112|gemma-4-e4b-it-v2,extract_receipt,medium,true,true,8107.9,17.1,
+113|gemma-4-e4b-it-v2,extract_api_log,hard,true,true,8152.5,17.0,
+114|mistral-small-3.2-24b,json_simple_person,easy,true,true,17877.6,2.4,
+115|mistral-small-3.2-24b,json_simple_product,easy,true,true,16613.4,2.7,
+116|mistral-small-3.2-24b,json_nested_address,medium,true,true,24949.0,2.7,
+117|mistral-small-3.2-24b,json_array_orders,medium,true,true,61683.8,2.5,
+118|mistral-small-3.2-24b,json_complex_api,hard,true,true,77314.5,2.4,
+119|mistral-small-3.2-24b,schema_weather,easy,true,true,20652.4,2.3,
+120|mistral-small-3.2-24b,schema_database_record,medium,true,true,31038.0,2.4,
+121|mistral-small-3.2-24b,schema_config_file,hard,true,true,53508.4,2.7,
+122|mistral-small-3.2-24b,funcall_get_weather,easy,true,true,7490.8,2.5,
+123|mistral-small-3.2-24b,funcall_search_multi,medium,true,true,62206.0,2.5,
+124|mistral-small-3.2-24b,funcall_database_query,hard,true,true,30230.2,2.6,
+125|mistral-small-3.2-24b,extract_business_card,easy,true,true,28862.8,2.4,
+126|mistral-small-3.2-24b,extract_receipt,medium,true,true,77160.3,2.4,
+127|mistral-small-3.2-24b,extract_api_log,hard,true,true,62263.7,2.4,
+128|qwen3-4b-instruct,json_simple_person,easy,true,true,981.7,33.6,
+129|qwen3-4b-instruct,json_simple_product,easy,true,true,982.1,34.6,
+130|qwen3-4b-instruct,json_nested_address,medium,true,true,1487.5,34.3,
+131|qwen3-4b-instruct,json_array_orders,medium,true,true,2826.0,34.0,
+132|qwen3-4b-instruct,json_complex_api,hard,true,true,3790.9,34.0,
+133|qwen3-4b-instruct,schema_weather,easy,true,true,906.0,34.2,
+134|qwen3-4b-instruct,schema_database_record,medium,true,true,1746.7,33.8,
+135|qwen3-4b-instruct,schema_config_file,hard,true,true,2968.7,33.3,
+136|qwen3-4b-instruct,funcall_get_weather,easy,true,true,541.1,33.3,
+137|qwen3-4b-instruct,funcall_search_multi,medium,true,true,2548.2,34.1,
+138|qwen3-4b-instruct,funcall_database_query,hard,true,true,1375.4,34.2,
+139|qwen3-4b-instruct,extract_business_card,easy,true,true,1772.9,34.4,
+140|qwen3-4b-instruct,extract_receipt,medium,true,true,5225.6,33.9,
+141|qwen3-4b-instruct,extract_api_log,hard,true,true,4209.6,34.0,
+142|qwen3-4b-instruct,json_simple_person,easy,true,true,968.7,34.1,
+143|qwen3-4b-instruct,json_simple_product,easy,true,true,1010.6,33.6,
+144|qwen3-4b-instruct,json_nested_address,medium,true,true,1531.5,33.3,
+145|qwen3-4b-instruct,json_array_orders,medium,true,true,2814.7,34.1,
+146|qwen3-4b-instruct,json_complex_api,hard,true,true,3750.3,34.4,
+147|qwen3-4b-instruct,schema_weather,easy,true,true,898.7,34.5,
+148|qwen3-4b-instruct,schema_database_record,medium,true,true,1732.2,34.1,
+149|qwen3-4b-instruct,schema_config_file,hard,true,true,2936.5,33.7,
+150|qwen3-4b-instruct,funcall_get_weather,easy,true,true,539.9,33.3,
+151|qwen3-4b-instruct,funcall_search_multi,medium,true,true,2607.2,33.4,
+152|qwen3-4b-instruct,funcall_database_query,hard,true,true,1384.5,33.9,
+153|qwen3-4b-instruct,extract_business_card,easy,true,true,1806.5,33.8,
+154|qwen3-4b-instruct,extract_receipt,medium,true,true,5284.0,33.5,
+155|qwen3-4b-instruct,extract_api_log,hard,true,true,4158.4,34.4,
+156|qwen3-4b-instruct,json_simple_person,easy,true,true,943.5,35.0,
+157|qwen3-4b-instruct,json_simple_product,easy,true,true,967.5,35.1,
+158|qwen3-4b-instruct,json_nested_address,medium,true,true,1516.7,33.6,
+159|qwen3-4b-instruct,json_array_orders,medium,true,true,2843.4,33.8,
+160|qwen3-4b-instruct,json_complex_api,hard,true,true,3770.9,34.2,
+161|qwen3-4b-instruct,schema_weather,easy,true,true,915.4,33.9,
+162|qwen3-4b-instruct,schema_database_record,medium,true,true,1948.6,30.3,
+163|qwen3-4b-instruct,schema_config_file,hard,true,true,3127.9,31.7,
+164|qwen3-4b-instruct,funcall_get_weather,easy,true,true,561.4,32.1,
+165|qwen3-4b-instruct,funcall_search_multi,medium,true,true,2801.7,31.1,
+166|qwen3-4b-instruct,funcall_database_query,hard,true,true,1381.5,34.0,
+167|qwen3-4b-instruct,extract_business_card,easy,true,true,1907.7,32.0,
+168|qwen3-4b-instruct,extract_receipt,medium,true,true,5354.7,33.1,
+169|qwen3-4b-instruct,extract_api_log,hard,true,true,4269.6,33.5,
+170|
+gemma-4-e2b-it,json_simple_person,easy,true,true,2046.7,17.1,
+gemma-4-e2b-it,json_simple_product,easy,false,false,1908.9,17.3,truncated output — missing opening brace and "product" key
+gemma-4-e2b-it,json_nested_address,medium,true,true,2950.3,17.3,
+gemma-4-e2b-it,json_array_orders,medium,true,true,6766.0,17.1,
+gemma-4-e2b-it,json_complex_api,hard,true,false,7732.2,17.3,missing metadata field
+gemma-4-e2b-it,schema_weather,easy,false,false,1556.8,17.3,schema regurgitation — echoed JSON Schema fragments instead of data
+gemma-4-e2b-it,schema_database_record,medium,false,false,3640.5,17.3,schema regurgitation — echoed JSON Schema fragments instead of data
+gemma-4-e2b-it,schema_config_file,hard,false,false,5955.1,17.3,schema regurgitation — echoed JSON Schema fragments instead of data
+gemma-4-e2b-it,funcall_get_weather,easy,false,false,1101.5,17.2,schema regurgitation — echoed function parameter definition instead of calling function
+gemma-4-e2b-it,funcall_search_multi,medium,false,false,4005.8,17.2,schema regurgitation — echoed function parameter definitions
+gemma-4-e2b-it,funcall_database_query,hard,false,false,2583.1,17.4,schema regurgitation — echoed function parameter definition
+gemma-4-e2b-it,extract_business_card,easy,true,true,3175.3,17.3,
+gemma-4-e2b-it,extract_receipt,medium,true,true,8082.5,17.2,
+gemma-4-e2b-it,extract_api_log,hard,false,false,8122.9,17.1,could not extract valid JSON from output
+gemma-4-e2b-it,json_simple_person,easy,true,true,2019.8,17.3,
+gemma-4-e2b-it,json_simple_product,easy,false,false,1914.1,17.2,truncated output — missing opening brace and "product" key
+gemma-4-e2b-it,json_nested_address,medium,true,true,2960.4,17.2,
+gemma-4-e2b-it,json_array_orders,medium,true,true,6692.1,17.3,
+gemma-4-e2b-it,json_complex_api,hard,true,false,7736.1,17.3,missing metadata field
+gemma-4-e2b-it,schema_weather,easy,false,false,1560.2,17.3,schema regurgitation — echoed JSON Schema fragments instead of data
+gemma-4-e2b-it,schema_database_record,medium,false,false,3627.0,17.4,schema regurgitation — echoed JSON Schema fragments instead of data
+gemma-4-e2b-it,schema_config_file,hard,false,false,5944.0,17.3,schema regurgitation — echoed JSON Schema fragments instead of data
+gemma-4-e2b-it,funcall_get_weather,easy,false,false,1119.7,17.0,schema regurgitation — echoed function parameter definition instead of calling function
+gemma-4-e2b-it,funcall_search_multi,medium,false,false,4034.9,17.1,schema regurgitation — echoed function parameter definitions
+gemma-4-e2b-it,funcall_database_query,hard,false,false,2616.0,17.2,schema regurgitation — echoed function parameter definition
+gemma-4-e2b-it,extract_business_card,easy,true,true,3174.5,17.3,
+gemma-4-e2b-it,extract_receipt,medium,true,true,8035.7,17.3,
+gemma-4-e2b-it,extract_api_log,hard,false,false,8016.2,17.3,could not extract valid JSON from output
+gemma-4-e2b-it,json_simple_person,easy,true,true,2030.7,17.2,
+gemma-4-e2b-it,json_simple_product,easy,false,false,1911.0,17.3,truncated output — missing opening brace and "product" key
+gemma-4-e2b-it,json_nested_address,medium,true,true,2969.0,17.2,
+gemma-4-e2b-it,json_array_orders,medium,true,true,6797.2,17.1,
+gemma-4-e2b-it,json_complex_api,hard,true,false,7740.1,17.3,missing metadata field
+gemma-4-e2b-it,schema_weather,easy,false,false,1556.9,17.3,schema regurgitation — echoed JSON Schema fragments instead of data
+gemma-4-e2b-it,schema_database_record,medium,false,false,3614.6,17.4,schema regurgitation — echoed JSON Schema fragments instead of data
+gemma-4-e2b-it,schema_config_file,hard,false,false,5911.3,17.4,schema regurgitation — echoed JSON Schema fragments instead of data
+gemma-4-e2b-it,funcall_get_weather,easy,false,false,1097.0,17.3,schema regurgitation — echoed function parameter definition instead of calling function
+gemma-4-e2b-it,funcall_search_multi,medium,false,false,3958.3,17.4,schema regurgitation — echoed function parameter definitions
+gemma-4-e2b-it,funcall_database_query,hard,false,false,2576.3,17.5,schema regurgitation — echoed function parameter definition
+gemma-4-e2b-it,extract_business_card,easy,true,true,3168.6,17.4,
+gemma-4-e2b-it,extract_receipt,medium,true,true,7972.2,17.4,
+gemma-4-e2b-it,extract_api_log,hard,false,false,7990.5,17.4,could not extract valid JSON from output

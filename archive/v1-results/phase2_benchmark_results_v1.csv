@@ -1,0 +1,43 @@
+model,task_id,difficulty,json_valid,schema_valid,latency_ms,tokens_per_sec,failure_reason,run
+qwen3-0.6b-nothink,json_simple_person,easy,true,true,1260.5,36.5,,1
+qwen3-0.6b-nothink,json_simple_product,easy,true,true,1222.4,38.4,,1
+qwen3-0.6b-nothink,json_nested_address,medium,true,true,1901.8,37.3,,1
+qwen3-0.6b-nothink,json_array_orders,medium,true,true,3598.6,38.3,,1
+qwen3-0.6b-nothink,json_complex_api,hard,true,true,4768.5,39.2,,1
+qwen3-0.6b-nothink,schema_weather,easy,true,true,1271.2,40.1,,1
+qwen3-0.6b-nothink,schema_database_record,medium,true,true,2339.7,38.0,,1
+qwen3-0.6b-nothink,schema_config_file,hard,true,true,3994.2,36.6,,1
+qwen3-0.6b-nothink,funcall_get_weather,easy,true,true,652.1,39.9,,1
+qwen3-0.6b-nothink,funcall_search_multi,medium,true,false,1246.3,39.3,returned only 1 function call (search_web) instead of 2; single object instead of array,1
+qwen3-0.6b-nothink,funcall_database_query,hard,true,true,1421.8,38.7,,1
+qwen3-0.6b-nothink,extract_business_card,easy,true,true,1840.3,37.5,,1
+qwen3-0.6b-nothink,extract_receipt,medium,true,false,4948.5,37.4,price values as strings instead of numbers - type mismatch,1
+qwen3-0.6b-nothink,extract_api_log,hard,true,true,3925.9,38.5,,1
+qwen3-0.6b-nothink,json_simple_person,easy,true,true,1222.5,37.6,,2
+qwen3-0.6b-nothink,json_simple_product,easy,true,true,1203.7,39.0,,2
+qwen3-0.6b-nothink,json_nested_address,medium,true,true,1761.5,40.3,,2
+qwen3-0.6b-nothink,json_array_orders,medium,true,true,3397.3,40.6,,2
+qwen3-0.6b-nothink,json_complex_api,hard,true,true,4938.7,37.9,,2
+qwen3-0.6b-nothink,schema_weather,easy,true,true,1307.9,39.0,,2
+qwen3-0.6b-nothink,schema_database_record,medium,true,true,2330.0,38.2,,2
+qwen3-0.6b-nothink,schema_config_file,hard,true,true,3827.9,38.1,,2
+qwen3-0.6b-nothink,funcall_get_weather,easy,true,true,671.8,38.7,,2
+qwen3-0.6b-nothink,funcall_search_multi,medium,true,false,1251.4,39.2,returned only 1 function call (search_web) instead of 2; single object instead of array,2
+qwen3-0.6b-nothink,funcall_database_query,hard,true,true,1417.2,38.8,,2
+qwen3-0.6b-nothink,extract_business_card,easy,true,true,1753.5,39.4,,2
+qwen3-0.6b-nothink,extract_receipt,medium,true,false,4776.3,38.7,price values as strings instead of numbers - type mismatch,2
+qwen3-0.6b-nothink,extract_api_log,hard,true,true,3839.2,39.3,,2
+qwen3-0.6b-nothink,json_simple_person,easy,true,true,1159.9,39.7,,3
+qwen3-0.6b-nothink,json_simple_product,easy,true,true,1259.8,37.3,,3
+qwen3-0.6b-nothink,json_nested_address,medium,true,true,1830.1,38.8,,3
+qwen3-0.6b-nothink,json_array_orders,medium,true,true,3524.8,39.2,,3
+qwen3-0.6b-nothink,json_complex_api,hard,true,true,4927.2,38.0,,3
+qwen3-0.6b-nothink,schema_weather,easy,true,true,1320.4,38.6,,3
+qwen3-0.6b-nothink,schema_database_record,medium,true,true,2252.2,39.5,,3
+qwen3-0.6b-nothink,schema_config_file,hard,true,true,3742.3,39.0,,3
+qwen3-0.6b-nothink,funcall_get_weather,easy,true,true,663.6,39.2,,3
+qwen3-0.6b-nothink,funcall_search_multi,medium,true,false,1244.4,39.4,returned only 1 function call (search_web) instead of 2; single object instead of array,3
+qwen3-0.6b-nothink,funcall_database_query,hard,true,true,1421.0,38.7,,3
+qwen3-0.6b-nothink,extract_business_card,easy,true,true,1866.6,37.0,,3
+qwen3-0.6b-nothink,extract_receipt,medium,true,false,4771.4,38.8,price values as strings instead of numbers - type mismatch,3
+qwen3-0.6b-nothink,extract_api_log,hard,true,true,3978.5,38.0,,3

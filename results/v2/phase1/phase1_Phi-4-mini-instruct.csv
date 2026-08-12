@@ -1,0 +1,15 @@
+run,task_id,category,difficulty,json_valid,schema_valid,latency_ms,tokens_generated,tokens_per_sec,error
+1,json_simple_person,json_generation,easy,True,True,1129.3,42,37.2,
+1,json_simple_product,json_generation,easy,True,True,792.3,40,50.5,
+1,json_nested_address,json_generation,medium,True,True,1249.6,63,50.4,
+1,json_array_orders,json_generation,medium,True,True,2760.7,140,50.7,
+1,json_complex_api,json_generation,hard,True,True,3537.7,179,50.6,
+1,schema_weather,schema_adherence,easy,True,True,1013.3,51,50.3,
+1,schema_database_record,schema_adherence,medium,True,True,1511.7,76,50.3,
+1,schema_config_file,schema_adherence,hard,True,True,2921.0,147,50.3,
+1,funcall_get_weather,function_calling,easy,True,True,596.6,30,50.3,
+1,funcall_search_multi,function_calling,medium,True,True,1467.8,74,50.4,
+1,funcall_database_query,function_calling,hard,True,True,1506.0,76,50.5,
+1,extract_business_card,extraction,easy,True,True,1168.0,59,50.5,
+1,extract_receipt,extraction,medium,True,False,3242.7,164,50.6,Schema validation: '$20.49' is not of type 'number' (string includes dollar sign)
+1,extract_api_log,extraction,hard,True,True,2570.3,130,50.6,

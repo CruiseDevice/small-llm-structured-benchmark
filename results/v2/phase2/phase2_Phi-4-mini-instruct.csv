@@ -1,0 +1,154 @@
+model,phase,temperature,run,task_id,category,difficulty,json_valid,schema_valid,latency_ms,tokens_generated,tokens_per_sec,error
+microsoft/Phi-4-mini-instruct,2,0.0,1,json_simple_person,json_generation,easy,True,True,1698.6,42,24.7,
+microsoft/Phi-4-mini-instruct,2,0.0,2,json_simple_person,json_generation,easy,True,True,1183.5,42,35.5,
+microsoft/Phi-4-mini-instruct,2,0.0,3,json_simple_person,json_generation,easy,True,True,1181.9,42,35.5,
+microsoft/Phi-4-mini-instruct,2,0.0,1,json_simple_product,json_generation,easy,True,True,1129.8,40,35.4,
+microsoft/Phi-4-mini-instruct,2,0.0,2,json_simple_product,json_generation,easy,True,True,1127.1,40,35.5,
+microsoft/Phi-4-mini-instruct,2,0.0,3,json_simple_product,json_generation,easy,True,True,1124.3,40,35.6,
+microsoft/Phi-4-mini-instruct,2,0.0,1,json_nested_address,json_generation,medium,True,True,1778.7,63,35.4,
+microsoft/Phi-4-mini-instruct,2,0.0,2,json_nested_address,json_generation,medium,True,True,1754.5,63,35.9,
+microsoft/Phi-4-mini-instruct,2,0.0,3,json_nested_address,json_generation,medium,True,True,1748.6,63,36.0,
+microsoft/Phi-4-mini-instruct,2,0.0,1,json_array_orders,json_generation,medium,True,True,3914.1,140,35.8,
+microsoft/Phi-4-mini-instruct,2,0.0,2,json_array_orders,json_generation,medium,True,True,3974.2,140,35.2,
+microsoft/Phi-4-mini-instruct,2,0.0,3,json_array_orders,json_generation,medium,True,True,3992.7,140,35.1,
+microsoft/Phi-4-mini-instruct,2,0.0,1,json_complex_api,json_generation,hard,True,True,5117.8,179,35.0,
+microsoft/Phi-4-mini-instruct,2,0.0,2,json_complex_api,json_generation,hard,True,True,5074.2,179,35.3,
+microsoft/Phi-4-mini-instruct,2,0.0,3,json_complex_api,json_generation,hard,True,True,5036.0,179,35.5,
+microsoft/Phi-4-mini-instruct,2,0.0,1,schema_weather,schema_adherence,easy,True,True,1447.2,51,35.2,
+microsoft/Phi-4-mini-instruct,2,0.0,2,schema_weather,schema_adherence,easy,True,True,1442.1,51,35.4,
+microsoft/Phi-4-mini-instruct,2,0.0,3,schema_weather,schema_adherence,easy,True,True,1444.8,51,35.3,
+microsoft/Phi-4-mini-instruct,2,0.0,1,schema_database_record,schema_adherence,medium,True,True,2141.8,76,35.5,
+microsoft/Phi-4-mini-instruct,2,0.0,2,schema_database_record,schema_adherence,medium,True,True,2145.9,76,35.4,
+microsoft/Phi-4-mini-instruct,2,0.0,3,schema_database_record,schema_adherence,medium,True,True,2145.5,76,35.4,
+microsoft/Phi-4-mini-instruct,2,0.0,1,schema_config_file,schema_adherence,hard,True,True,4162.3,147,35.3,
+microsoft/Phi-4-mini-instruct,2,0.0,2,schema_config_file,schema_adherence,hard,True,True,4154.6,147,35.4,
+microsoft/Phi-4-mini-instruct,2,0.0,3,schema_config_file,schema_adherence,hard,True,True,4153.8,147,35.4,
+microsoft/Phi-4-mini-instruct,2,0.0,1,funcall_get_weather,function_calling,easy,True,True,852.9,30,35.2,
+microsoft/Phi-4-mini-instruct,2,0.0,2,funcall_get_weather,function_calling,easy,True,True,852.8,30,35.2,
+microsoft/Phi-4-mini-instruct,2,0.0,3,funcall_get_weather,function_calling,easy,True,True,852.4,30,35.2,
+microsoft/Phi-4-mini-instruct,2,0.0,1,funcall_search_multi,function_calling,medium,True,True,2099.4,74,35.2,
+microsoft/Phi-4-mini-instruct,2,0.0,2,funcall_search_multi,function_calling,medium,True,True,2099.0,74,35.3,
+microsoft/Phi-4-mini-instruct,2,0.0,3,funcall_search_multi,function_calling,medium,True,True,2097.9,74,35.3,
+microsoft/Phi-4-mini-instruct,2,0.0,1,funcall_database_query,function_calling,hard,True,True,2153.5,76,35.3,
+microsoft/Phi-4-mini-instruct,2,0.0,2,funcall_database_query,function_calling,hard,True,True,2149.3,76,35.4,
+microsoft/Phi-4-mini-instruct,2,0.0,3,funcall_database_query,function_calling,hard,True,True,2151.1,76,35.3,
+microsoft/Phi-4-mini-instruct,2,0.0,1,extract_business_card,extraction,easy,True,True,1660.6,59,35.5,
+microsoft/Phi-4-mini-instruct,2,0.0,2,extract_business_card,extraction,easy,True,True,1660.9,59,35.5,
+microsoft/Phi-4-mini-instruct,2,0.0,3,extract_business_card,extraction,easy,True,True,1668.4,59,35.4,
+microsoft/Phi-4-mini-instruct,2,0.0,1,extract_receipt,extraction,medium,True,False,4648.2,164,35.3,"Schema validation: '$20.49' is not of type 'number'
+
+Failed validating 'type' in schema['properties']['total']:
+    {'t"
+microsoft/Phi-4-mini-instruct,2,0.0,2,extract_receipt,extraction,medium,True,False,4628.2,164,35.4,"Schema validation: '$20.49' is not of type 'number'
+
+Failed validating 'type' in schema['properties']['total']:
+    {'t"
+microsoft/Phi-4-mini-instruct,2,0.0,3,extract_receipt,extraction,medium,True,False,4629.2,164,35.4,"Schema validation: '$20.49' is not of type 'number'
+
+Failed validating 'type' in schema['properties']['total']:
+    {'t"
+microsoft/Phi-4-mini-instruct,2,0.0,1,extract_api_log,extraction,hard,True,True,3667.0,130,35.5,
+microsoft/Phi-4-mini-instruct,2,0.0,2,extract_api_log,extraction,hard,True,True,3669.2,130,35.4,
+microsoft/Phi-4-mini-instruct,2,0.0,3,extract_api_log,extraction,hard,True,True,3676.1,130,35.4,
+microsoft/Phi-4-mini-instruct,2,0.3,1,json_simple_person,json_generation,easy,True,True,1240.3,41,33.1,
+microsoft/Phi-4-mini-instruct,2,0.3,2,json_simple_person,json_generation,easy,True,True,1185.7,42,35.4,
+microsoft/Phi-4-mini-instruct,2,0.3,3,json_simple_person,json_generation,easy,True,True,1185.0,42,35.4,
+microsoft/Phi-4-mini-instruct,2,0.3,1,json_simple_product,json_generation,easy,True,True,1131.4,40,35.4,
+microsoft/Phi-4-mini-instruct,2,0.3,2,json_simple_product,json_generation,easy,True,True,1129.3,40,35.4,
+microsoft/Phi-4-mini-instruct,2,0.3,3,json_simple_product,json_generation,easy,True,True,1158.6,41,35.4,
+microsoft/Phi-4-mini-instruct,2,0.3,1,json_nested_address,json_generation,medium,True,True,1787.8,63,35.2,
+microsoft/Phi-4-mini-instruct,2,0.3,2,json_nested_address,json_generation,medium,True,True,1755.4,62,35.3,
+microsoft/Phi-4-mini-instruct,2,0.3,3,json_nested_address,json_generation,medium,True,True,1752.5,62,35.4,
+microsoft/Phi-4-mini-instruct,2,0.3,1,json_array_orders,json_generation,medium,True,True,3973.4,140,35.2,
+microsoft/Phi-4-mini-instruct,2,0.3,2,json_array_orders,json_generation,medium,True,True,3778.6,133,35.2,
+microsoft/Phi-4-mini-instruct,2,0.3,3,json_array_orders,json_generation,medium,True,True,3979.2,140,35.2,
+microsoft/Phi-4-mini-instruct,2,0.3,1,json_complex_api,json_generation,hard,True,True,5085.9,179,35.2,
+microsoft/Phi-4-mini-instruct,2,0.3,2,json_complex_api,json_generation,hard,True,True,5141.9,180,35.0,
+microsoft/Phi-4-mini-instruct,2,0.3,3,json_complex_api,json_generation,hard,True,True,5115.3,180,35.2,
+microsoft/Phi-4-mini-instruct,2,0.3,1,schema_weather,schema_adherence,easy,True,True,1366.9,48,35.1,
+microsoft/Phi-4-mini-instruct,2,0.3,2,schema_weather,schema_adherence,easy,True,True,1368.1,48,35.1,
+microsoft/Phi-4-mini-instruct,2,0.3,3,schema_weather,schema_adherence,easy,True,True,1307.5,46,35.2,
+microsoft/Phi-4-mini-instruct,2,0.3,1,schema_database_record,schema_adherence,medium,True,True,2103.7,74,35.2,
+microsoft/Phi-4-mini-instruct,2,0.3,2,schema_database_record,schema_adherence,medium,True,True,2105.2,74,35.2,
+microsoft/Phi-4-mini-instruct,2,0.3,3,schema_database_record,schema_adherence,medium,True,True,2132.5,75,35.2,
+microsoft/Phi-4-mini-instruct,2,0.3,1,schema_config_file,schema_adherence,hard,True,True,4469.0,157,35.1,
+microsoft/Phi-4-mini-instruct,2,0.3,2,schema_config_file,schema_adherence,hard,True,True,4186.8,147,35.1,
+microsoft/Phi-4-mini-instruct,2,0.3,3,schema_config_file,schema_adherence,hard,True,True,4181.1,147,35.2,
+microsoft/Phi-4-mini-instruct,2,0.3,1,funcall_get_weather,function_calling,easy,True,True,857.4,30,35.0,
+microsoft/Phi-4-mini-instruct,2,0.3,2,funcall_get_weather,function_calling,easy,True,True,854.8,30,35.1,
+microsoft/Phi-4-mini-instruct,2,0.3,3,funcall_get_weather,function_calling,easy,True,True,856.1,30,35.0,
+microsoft/Phi-4-mini-instruct,2,0.3,1,funcall_search_multi,function_calling,medium,True,True,2108.8,74,35.1,
+microsoft/Phi-4-mini-instruct,2,0.3,2,funcall_search_multi,function_calling,medium,True,True,2110.9,74,35.1,
+microsoft/Phi-4-mini-instruct,2,0.3,3,funcall_search_multi,function_calling,medium,True,True,2110.4,74,35.1,
+microsoft/Phi-4-mini-instruct,2,0.3,1,funcall_database_query,function_calling,hard,True,True,2163.7,76,35.1,
+microsoft/Phi-4-mini-instruct,2,0.3,2,funcall_database_query,function_calling,hard,True,True,1884.1,66,35.0,
+microsoft/Phi-4-mini-instruct,2,0.3,3,funcall_database_query,function_calling,hard,True,True,2164.4,76,35.1,
+microsoft/Phi-4-mini-instruct,2,0.3,1,extract_business_card,extraction,easy,True,True,1673.8,59,35.2,
+microsoft/Phi-4-mini-instruct,2,0.3,2,extract_business_card,extraction,easy,True,True,1672.6,59,35.3,
+microsoft/Phi-4-mini-instruct,2,0.3,3,extract_business_card,extraction,easy,True,True,1675.1,59,35.2,
+microsoft/Phi-4-mini-instruct,2,0.3,1,extract_receipt,extraction,medium,True,False,4656.5,164,35.2,"Schema validation: '$20.49' is not of type 'number'
+
+Failed validating 'type' in schema['properties']['total']:
+    {'t"
+microsoft/Phi-4-mini-instruct,2,0.3,2,extract_receipt,extraction,medium,True,False,4658.8,164,35.2,"Schema validation: '$20.49' is not of type 'number'
+
+Failed validating 'type' in schema['properties']['total']:
+    {'t"
+microsoft/Phi-4-mini-instruct,2,0.3,3,extract_receipt,extraction,medium,True,False,4660.6,164,35.2,"Schema validation: '$20.49' is not of type 'number'
+
+Failed validating 'type' in schema['properties']['total']:
+    {'t"
+microsoft/Phi-4-mini-instruct,2,0.3,1,extract_api_log,extraction,hard,True,True,3690.2,130,35.2,
+microsoft/Phi-4-mini-instruct,2,0.3,2,extract_api_log,extraction,hard,True,True,3692.4,130,35.2,
+microsoft/Phi-4-mini-instruct,2,0.3,3,extract_api_log,extraction,hard,True,True,3688.4,130,35.2,
+microsoft/Phi-4-mini-instruct,2,0.7,1,json_simple_person,json_generation,easy,True,True,1153.1,41,35.6,
+microsoft/Phi-4-mini-instruct,2,0.7,2,json_simple_person,json_generation,easy,True,True,1158.6,41,35.4,
+microsoft/Phi-4-mini-instruct,2,0.7,3,json_simple_person,json_generation,easy,True,True,1159.0,41,35.4,
+microsoft/Phi-4-mini-instruct,2,0.7,1,json_simple_product,json_generation,easy,True,True,1132.3,40,35.3,
+microsoft/Phi-4-mini-instruct,2,0.7,2,json_simple_product,json_generation,easy,True,True,1136.1,40,35.2,
+microsoft/Phi-4-mini-instruct,2,0.7,3,json_simple_product,json_generation,easy,True,True,1194.4,42,35.2,
+microsoft/Phi-4-mini-instruct,2,0.7,1,json_nested_address,json_generation,medium,True,True,1649.6,58,35.2,
+microsoft/Phi-4-mini-instruct,2,0.7,2,json_nested_address,json_generation,medium,True,True,1765.4,62,35.1,
+microsoft/Phi-4-mini-instruct,2,0.7,3,json_nested_address,json_generation,medium,True,True,1768.7,62,35.1,
+microsoft/Phi-4-mini-instruct,2,0.7,1,json_array_orders,json_generation,medium,True,True,3778.4,132,34.9,
+microsoft/Phi-4-mini-instruct,2,0.7,2,json_array_orders,json_generation,medium,True,True,4045.7,141,34.9,
+microsoft/Phi-4-mini-instruct,2,0.7,3,json_array_orders,json_generation,medium,True,True,4004.5,140,35.0,
+microsoft/Phi-4-mini-instruct,2,0.7,1,json_complex_api,json_generation,hard,True,True,5127.4,179,34.9,
+microsoft/Phi-4-mini-instruct,2,0.7,2,json_complex_api,json_generation,hard,True,True,5184.1,179,34.5,
+microsoft/Phi-4-mini-instruct,2,0.7,3,json_complex_api,json_generation,hard,True,True,4100.9,140,34.1,
+microsoft/Phi-4-mini-instruct,2,0.7,1,schema_weather,schema_adherence,easy,True,True,1495.4,51,34.1,
+microsoft/Phi-4-mini-instruct,2,0.7,2,schema_weather,schema_adherence,easy,True,True,1492.5,51,34.2,
+microsoft/Phi-4-mini-instruct,2,0.7,3,schema_weather,schema_adherence,easy,True,True,1289.0,44,34.1,
+microsoft/Phi-4-mini-instruct,2,0.7,1,schema_database_record,schema_adherence,medium,True,True,2169.6,74,34.1,
+microsoft/Phi-4-mini-instruct,2,0.7,2,schema_database_record,schema_adherence,medium,True,True,2195.7,75,34.2,
+microsoft/Phi-4-mini-instruct,2,0.7,3,schema_database_record,schema_adherence,medium,True,True,2165.9,74,34.2,
+microsoft/Phi-4-mini-instruct,2,0.7,1,schema_config_file,schema_adherence,hard,True,True,4151.7,142,34.2,
+microsoft/Phi-4-mini-instruct,2,0.7,2,schema_config_file,schema_adherence,hard,True,True,3400.0,119,35.0,
+microsoft/Phi-4-mini-instruct,2,0.7,3,schema_config_file,schema_adherence,hard,True,True,3865.1,136,35.2,
+microsoft/Phi-4-mini-instruct,2,0.7,1,funcall_get_weather,function_calling,easy,True,True,857.7,30,35.0,
+microsoft/Phi-4-mini-instruct,2,0.7,2,funcall_get_weather,function_calling,easy,True,True,1081.8,38,35.1,
+microsoft/Phi-4-mini-instruct,2,0.7,3,funcall_get_weather,function_calling,easy,True,True,856.8,30,35.0,
+microsoft/Phi-4-mini-instruct,2,0.7,1,funcall_search_multi,function_calling,medium,True,True,2360.4,83,35.2,
+microsoft/Phi-4-mini-instruct,2,0.7,2,funcall_search_multi,function_calling,medium,False,False,2338.2,83,35.5,Could not extract valid JSON
+microsoft/Phi-4-mini-instruct,2,0.7,3,funcall_search_multi,function_calling,medium,False,False,2215.2,79,35.7,Could not extract valid JSON
+microsoft/Phi-4-mini-instruct,2,0.7,1,funcall_database_query,function_calling,hard,True,True,2134.2,76,35.6,
+microsoft/Phi-4-mini-instruct,2,0.7,2,funcall_database_query,function_calling,hard,True,True,2135.5,76,35.6,
+microsoft/Phi-4-mini-instruct,2,0.7,3,funcall_database_query,function_calling,hard,True,True,2134.5,76,35.6,
+microsoft/Phi-4-mini-instruct,2,0.7,1,extract_business_card,extraction,easy,True,True,1650.1,59,35.8,
+microsoft/Phi-4-mini-instruct,2,0.7,2,extract_business_card,extraction,easy,True,True,1650.2,59,35.8,
+microsoft/Phi-4-mini-instruct,2,0.7,3,extract_business_card,extraction,easy,True,True,1537.2,55,35.8,
+microsoft/Phi-4-mini-instruct,2,0.7,1,extract_receipt,extraction,medium,True,False,4597.6,164,35.7,"Schema validation: '$20.49' is not of type 'number'
+
+Failed validating 'type' in schema['properties']['total']:
+    {'t"
+microsoft/Phi-4-mini-instruct,2,0.7,2,extract_receipt,extraction,medium,True,False,4593.9,164,35.7,"Schema validation: '$20.49' is not of type 'number'
+
+Failed validating 'type' in schema['properties']['total']:
+    {'t"
+microsoft/Phi-4-mini-instruct,2,0.7,3,extract_receipt,extraction,medium,True,False,4659.8,164,35.2,"Schema validation: '$20.49' is not of type 'number'
+
+Failed validating 'type' in schema['properties']['total']:
+    {'t"
+microsoft/Phi-4-mini-instruct,2,0.7,1,extract_api_log,extraction,hard,True,True,3784.2,130,34.4,
+microsoft/Phi-4-mini-instruct,2,0.7,2,extract_api_log,extraction,hard,True,True,3786.0,130,34.3,
+microsoft/Phi-4-mini-instruct,2,0.7,3,extract_api_log,extraction,hard,True,True,3783.4,130,34.4,

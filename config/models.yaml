@@ -1,0 +1,170 @@
+# Model configuration for small LLM structured output benchmark v2
+# Updated: June 7, 2026
+# 11 models across 5 families, 0.6B-24B range
+
+models:
+  # === Qwen Family (3 models: 0.6B, 1.7B, 4B) ===
+  qwen3-0.6b:
+    hf_id: Qwen/Qwen3-0.6B
+    params_b: 0.6
+    model_type: dense
+    family: Qwen
+    tokenizer_class: AutoTokenizer
+    special_handling:
+      - "Base model (not instruct). Needs /no_think suffix in user message to disable thinking tokens"
+    max_new_tokens: 512
+    dtype: bfloat16
+
+  qwen3-1.7b:
+    hf_id: Qwen/Qwen3-1.7B
+    params_b: 1.7
+    model_type: dense
+    family: Qwen
+    tokenizer_class: AutoTokenizer
+    special_handling:
+      - "Needs /no_think suffix in user message to disable thinking tokens"
+    max_new_tokens: 512
+    dtype: bfloat16
+
+  qwen3-4b:
+    hf_id: Qwen/Qwen3-4B-Instruct-2507
+    params_b: 4.0
+    model_type: dense
+    family: Qwen
+    tokenizer_class: AutoTokenizer
+    special_handling:
+      - "Non-thinking only model, no /no_think needed"
+    max_new_tokens: 512
+    dtype: bfloat16
+
+  # === Llama Family (2 models: 1B, 3B) ===
+  llama-3.2-1b:
+    hf_id: meta-llama/Llama-3.2-1B-Instruct
+    params_b: 1.0
+    model_type: dense
+    family: Llama
+    tokenizer_class: AutoTokenizer
+    special_handling:
+      - "Must set pad_token_id=128001 in generate()"
+    max_new_tokens: 512
+    dtype: bfloat16
+
+  llama-3.2-3b:
+    hf_id: meta-llama/Llama-3.2-3B-Instruct
+    params_b: 3.0
+    model_type: dense
+    family: Llama
+    tokenizer_class: AutoTokenizer
+    special_handling:
+      - "Must set pad_token_id=128001 in generate()"
+    max_new_tokens: 512
+    dtype: bfloat16
+
+  # === Phi Family (1 model: 3.8B) ===
+  phi-4-mini:
+    hf_id: microsoft/Phi-4-mini-instruct
+    params_b: 3.8
+    model_type: dense
+    family: Phi
+    tokenizer_class: AutoTokenizer
+    special_handling: []
+    max_new_tokens: 512
+    dtype: bfloat16
+
+  # === Gemma Family (3 models: 3n-2B dense, 4-E2B MoE, 4-12B dense unified) ===
+  gemma-3n-2b:
+    hf_id: google/gemma-3n-2b-it
+    params_b: 2.0
+    model_type: dense
+    family: Gemma
+    tokenizer_class: AutoTokenizer
+    special_handling:
+      - "Uses AutoProcessor, not AutoTokenizer"
+      - "Use processor.apply_chat_template with appropriate params"
+    max_new_tokens: 512
+    dtype: bfloat16
+
+  gemma-4-e2b:
+    hf_id: google/gemma-4-E2B-it
+    params_b: 5.0
+    active_params_b: 2.0
+    model_type: moe
+    family: Gemma
+    tokenizer_class: AutoProcessor
+    special_handling:
+      - "Uses AutoProcessor, not AutoTokenizer"
+      - "Use processor.apply_chat_template(messages, tokenize=False, add_generation_prompt=True, enable_thinking=False)"
+    max_new_tokens: 512
+    dtype: bfloat16
+
+  gemma-4-12b:
+    hf_id: google/gemma-4-12B-it
+    params_b: 12.0
+    model_type: dense
+    family: Gemma
+    tokenizer_class: AutoProcessor
+    model_class: AutoModelForImageTextToText  # New unified architecture
+    special_handling:
+      - "Uses AutoProcessor + AutoModelForImageTextToText (NOT AutoModelForCausalLM)"
+      - "Encoder-free unified architecture (gemma4_unified)"
+      - "Released June 3, 2026 — newest model in benchmark"
+      - "Needs ~16GB VRAM, fits RTX 4090"
+    max_new_tokens: 512
+    dtype: bfloat16
+
+  # === Qwen MoE (1 model: 30B total, 3B active) ===
+  qwen3-30b-a3b:
+    hf_id: Qwen/Qwen3-30B-A3B-Instruct-2507
+    params_b: 30.5
+    active_params_b: 3.3
+    model_type: moe
+    family: Qwen
+    tokenizer_class: AutoTokenizer
+    special_handling:
+      - "MoE model: 30.5B total params but only 3.3B active per forward pass (128 experts, 8 active)"
+      - "Fits on RTX 4090 in bfloat16 (activates only ~3.3B at a time)"
+      - "Non-thinking only model, no /no_think needed"
+    max_new_tokens: 512
+    dtype: bfloat16
+
+  # === Mistral Family (1 model: 24B — reference/large model) ===
+  mistral-small-24b:
+    hf_id: mistralai/Mistral-Small-3.2-24B-Instruct-2506
+    params_b: 24.0
+    model_type: dense
+    family: Mistral
+    tokenizer_class: AutoTokenizer
+    special_handling:
+      - "Must set pad_token_id=2 in generate()"
+      - "Needs RTX 6000 Ada (48GB VRAM) — does NOT fit on RTX 4090"
+    max_new_tokens: 512
+    dtype: bfloat16
+    reference: true
+
+# Experiment settings (for Phase 1 and Phase 2)
+experiment:
+  phase1_runs: 1       # Single run per task
+  phase2_runs: 3       # 3 runs per task for variance
+  do_sample: false      # Greedy decoding for reproducibility
+  max_new_tokens: 512
+  seed: 42
+
+# Hardware mapping
+hardware:
+  rtx_4090:
+    vram_gb: 24
+    fits_models:
+      - qwen3-0.6b
+      - qwen3-1.7b
+      - qwen3-4b
+      - llama-3.2-1b
+      - llama-3.2-3b
+      - phi-4-mini
+      - gemma-3n-2b
+      - gemma-4-e2b
+      - gemma-4-12b
+      - qwen3-30b-a3b
+  rtx_6000_ada:
+    vram_gb: 48
+    fits_models:
+      - mistral-small-24b

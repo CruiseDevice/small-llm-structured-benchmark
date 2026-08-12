@@ -1,0 +1,188 @@
+model,phase,temperature,run,task_id,category,difficulty,json_valid,schema_valid,latency_ms,tokens_generated,tokens_per_sec,error
+meta-llama/Llama-3.2-1B-Instruct,2,0.0,1,json_simple_person,json_generation,easy,True,True,1168.5,40,34.2,
+meta-llama/Llama-3.2-1B-Instruct,2,0.0,2,json_simple_person,json_generation,easy,True,True,623.1,40,64.2,
+meta-llama/Llama-3.2-1B-Instruct,2,0.0,3,json_simple_person,json_generation,easy,True,True,596.2,40,67.1,
+meta-llama/Llama-3.2-1B-Instruct,2,0.0,1,json_simple_product,json_generation,easy,True,True,614.5,39,63.5,
+meta-llama/Llama-3.2-1B-Instruct,2,0.0,2,json_simple_product,json_generation,easy,True,True,592.4,39,65.8,
+meta-llama/Llama-3.2-1B-Instruct,2,0.0,3,json_simple_product,json_generation,easy,True,True,586.9,39,66.4,
+meta-llama/Llama-3.2-1B-Instruct,2,0.0,1,json_nested_address,json_generation,medium,True,True,942.0,60,63.7,
+meta-llama/Llama-3.2-1B-Instruct,2,0.0,2,json_nested_address,json_generation,medium,True,True,1011.4,60,59.3,
+meta-llama/Llama-3.2-1B-Instruct,2,0.0,3,json_nested_address,json_generation,medium,True,True,998.8,60,60.1,
+meta-llama/Llama-3.2-1B-Instruct,2,0.0,1,json_array_orders,json_generation,medium,True,True,2394.8,146,61.0,
+meta-llama/Llama-3.2-1B-Instruct,2,0.0,2,json_array_orders,json_generation,medium,True,True,2304.7,146,63.3,
+meta-llama/Llama-3.2-1B-Instruct,2,0.0,3,json_array_orders,json_generation,medium,True,True,2475.4,146,59.0,
+meta-llama/Llama-3.2-1B-Instruct,2,0.0,1,json_complex_api,json_generation,hard,True,False,2266.7,139,61.3,"Schema validation: 'metadata' is a required property
+
+Failed validating 'required' in schema:
+    {'type': 'object',
+  "
+meta-llama/Llama-3.2-1B-Instruct,2,0.0,2,json_complex_api,json_generation,hard,True,False,2128.9,139,65.3,"Schema validation: 'metadata' is a required property
+
+Failed validating 'required' in schema:
+    {'type': 'object',
+  "
+meta-llama/Llama-3.2-1B-Instruct,2,0.0,3,json_complex_api,json_generation,hard,True,False,2156.5,139,64.5,"Schema validation: 'metadata' is a required property
+
+Failed validating 'required' in schema:
+    {'type': 'object',
+  "
+meta-llama/Llama-3.2-1B-Instruct,2,0.0,1,schema_weather,schema_adherence,easy,True,True,659.7,44,66.7,
+meta-llama/Llama-3.2-1B-Instruct,2,0.0,2,schema_weather,schema_adherence,easy,True,True,698.1,44,63.0,
+meta-llama/Llama-3.2-1B-Instruct,2,0.0,3,schema_weather,schema_adherence,easy,True,True,672.2,44,65.5,
+meta-llama/Llama-3.2-1B-Instruct,2,0.0,1,schema_database_record,schema_adherence,medium,True,False,1069.8,72,67.3,"Schema validation: Additional properties are not allowed ('maxItems' was unexpected)
+
+Failed validating 'additionalProp"
+meta-llama/Llama-3.2-1B-Instruct,2,0.0,2,schema_database_record,schema_adherence,medium,True,False,1095.0,72,65.8,"Schema validation: Additional properties are not allowed ('maxItems' was unexpected)
+
+Failed validating 'additionalProp"
+meta-llama/Llama-3.2-1B-Instruct,2,0.0,3,schema_database_record,schema_adherence,medium,True,False,1110.8,72,64.8,"Schema validation: Additional properties are not allowed ('maxItems' was unexpected)
+
+Failed validating 'additionalProp"
+meta-llama/Llama-3.2-1B-Instruct,2,0.0,1,schema_config_file,schema_adherence,hard,True,True,2192.5,142,64.8,
+meta-llama/Llama-3.2-1B-Instruct,2,0.0,2,schema_config_file,schema_adherence,hard,True,True,2128.4,142,66.7,
+meta-llama/Llama-3.2-1B-Instruct,2,0.0,3,schema_config_file,schema_adherence,hard,True,True,2127.7,142,66.7,
+meta-llama/Llama-3.2-1B-Instruct,2,0.0,1,funcall_get_weather,function_calling,easy,True,True,373.5,25,66.9,
+meta-llama/Llama-3.2-1B-Instruct,2,0.0,2,funcall_get_weather,function_calling,easy,True,True,382.7,25,65.3,
+meta-llama/Llama-3.2-1B-Instruct,2,0.0,3,funcall_get_weather,function_calling,easy,True,True,388.3,25,64.4,
+meta-llama/Llama-3.2-1B-Instruct,2,0.0,1,funcall_search_multi,function_calling,medium,True,False,424.1,27,63.7,"Schema validation: {'name': 'search_web', 'arguments': {'query': 'best restaurants in NYC', 'num_results': '5'}} is not"
+meta-llama/Llama-3.2-1B-Instruct,2,0.0,2,funcall_search_multi,function_calling,medium,True,False,407.1,27,66.3,"Schema validation: {'name': 'search_web', 'arguments': {'query': 'best restaurants in NYC', 'num_results': '5'}} is not"
+meta-llama/Llama-3.2-1B-Instruct,2,0.0,3,funcall_search_multi,function_calling,medium,True,False,399.7,27,67.6,"Schema validation: {'name': 'search_web', 'arguments': {'query': 'best restaurants in NYC', 'num_results': '5'}} is not"
+meta-llama/Llama-3.2-1B-Instruct,2,0.0,1,funcall_database_query,function_calling,hard,True,True,676.0,44,65.1,
+meta-llama/Llama-3.2-1B-Instruct,2,0.0,2,funcall_database_query,function_calling,hard,True,True,667.2,44,66.0,
+meta-llama/Llama-3.2-1B-Instruct,2,0.0,3,funcall_database_query,function_calling,hard,True,True,655.5,44,67.1,
+meta-llama/Llama-3.2-1B-Instruct,2,0.0,1,extract_business_card,extraction,easy,True,True,902.0,58,64.3,
+meta-llama/Llama-3.2-1B-Instruct,2,0.0,2,extract_business_card,extraction,easy,True,True,844.5,58,68.7,
+meta-llama/Llama-3.2-1B-Instruct,2,0.0,3,extract_business_card,extraction,easy,True,True,890.0,58,65.2,
+meta-llama/Llama-3.2-1B-Instruct,2,0.0,1,extract_receipt,extraction,medium,True,True,2483.0,167,67.3,
+meta-llama/Llama-3.2-1B-Instruct,2,0.0,2,extract_receipt,extraction,medium,True,True,2500.9,167,66.8,
+meta-llama/Llama-3.2-1B-Instruct,2,0.0,3,extract_receipt,extraction,medium,True,True,2497.0,167,66.9,
+meta-llama/Llama-3.2-1B-Instruct,2,0.0,1,extract_api_log,extraction,hard,True,True,1839.2,123,66.9,
+meta-llama/Llama-3.2-1B-Instruct,2,0.0,2,extract_api_log,extraction,hard,True,True,1866.1,123,65.9,
+meta-llama/Llama-3.2-1B-Instruct,2,0.0,3,extract_api_log,extraction,hard,True,True,1805.7,123,68.1,
+meta-llama/Llama-3.2-1B-Instruct,2,0.3,1,json_simple_person,json_generation,easy,True,True,685.5,40,58.4,
+meta-llama/Llama-3.2-1B-Instruct,2,0.3,2,json_simple_person,json_generation,easy,True,True,602.3,40,66.4,
+meta-llama/Llama-3.2-1B-Instruct,2,0.3,3,json_simple_person,json_generation,easy,True,True,592.2,40,67.5,
+meta-llama/Llama-3.2-1B-Instruct,2,0.3,1,json_simple_product,json_generation,easy,True,True,596.4,40,67.1,
+meta-llama/Llama-3.2-1B-Instruct,2,0.3,2,json_simple_product,json_generation,easy,True,True,593.0,39,65.8,
+meta-llama/Llama-3.2-1B-Instruct,2,0.3,3,json_simple_product,json_generation,easy,True,True,598.9,40,66.8,
+meta-llama/Llama-3.2-1B-Instruct,2,0.3,1,json_nested_address,json_generation,medium,True,True,899.7,60,66.7,
+meta-llama/Llama-3.2-1B-Instruct,2,0.3,2,json_nested_address,json_generation,medium,True,True,894.1,60,67.1,
+meta-llama/Llama-3.2-1B-Instruct,2,0.3,3,json_nested_address,json_generation,medium,True,True,886.9,60,67.7,
+meta-llama/Llama-3.2-1B-Instruct,2,0.3,1,json_array_orders,json_generation,medium,True,True,2179.6,146,67.0,
+meta-llama/Llama-3.2-1B-Instruct,2,0.3,2,json_array_orders,json_generation,medium,True,True,2198.5,147,66.9,
+meta-llama/Llama-3.2-1B-Instruct,2,0.3,3,json_array_orders,json_generation,medium,True,True,2160.9,146,67.6,
+meta-llama/Llama-3.2-1B-Instruct,2,0.3,1,json_complex_api,json_generation,hard,True,False,2639.9,177,67.0,"Schema validation: 'metadata' is a required property
+
+Failed validating 'required' in schema:
+    {'type': 'object',
+  "
+meta-llama/Llama-3.2-1B-Instruct,2,0.3,2,json_complex_api,json_generation,hard,True,False,2079.6,140,67.3,"Schema validation: 'metadata' is a required property
+
+Failed validating 'required' in schema:
+    {'type': 'object',
+  "
+meta-llama/Llama-3.2-1B-Instruct,2,0.3,3,json_complex_api,json_generation,hard,True,False,2063.2,135,65.4,"Schema validation: 'metadata' is a required property
+
+Failed validating 'required' in schema:
+    {'type': 'object',
+  "
+meta-llama/Llama-3.2-1B-Instruct,2,0.3,1,schema_weather,schema_adherence,easy,True,True,672.2,44,65.5,
+meta-llama/Llama-3.2-1B-Instruct,2,0.3,2,schema_weather,schema_adherence,easy,True,True,702.4,46,65.5,
+meta-llama/Llama-3.2-1B-Instruct,2,0.3,3,schema_weather,schema_adherence,easy,True,True,690.2,45,65.2,
+meta-llama/Llama-3.2-1B-Instruct,2,0.3,1,schema_database_record,schema_adherence,medium,True,False,1338.7,88,65.7,"Schema validation: Additional properties are not allowed ('additionalProperties' was unexpected)
+
+Failed validating 'ad"
+meta-llama/Llama-3.2-1B-Instruct,2,0.3,2,schema_database_record,schema_adherence,medium,True,False,1300.9,85,65.3,"Schema validation: Additional properties are not allowed ('additionalProperties' was unexpected)
+
+Failed validating 'ad"
+meta-llama/Llama-3.2-1B-Instruct,2,0.3,3,schema_database_record,schema_adherence,medium,True,False,1334.7,87,65.2,"Schema validation: Additional properties are not allowed ('additionalProperties' was unexpected)
+
+Failed validating 'ad"
+meta-llama/Llama-3.2-1B-Instruct,2,0.3,1,schema_config_file,schema_adherence,hard,True,True,2643.9,171,64.7,
+meta-llama/Llama-3.2-1B-Instruct,2,0.3,2,schema_config_file,schema_adherence,hard,True,True,2339.4,149,63.7,
+meta-llama/Llama-3.2-1B-Instruct,2,0.3,3,schema_config_file,schema_adherence,hard,True,True,1896.5,121,63.8,
+meta-llama/Llama-3.2-1B-Instruct,2,0.3,1,funcall_get_weather,function_calling,easy,True,True,386.6,25,64.7,
+meta-llama/Llama-3.2-1B-Instruct,2,0.3,2,funcall_get_weather,function_calling,easy,True,True,382.3,25,65.4,
+meta-llama/Llama-3.2-1B-Instruct,2,0.3,3,funcall_get_weather,function_calling,easy,True,True,386.7,25,64.6,
+meta-llama/Llama-3.2-1B-Instruct,2,0.3,1,funcall_search_multi,function_calling,medium,False,False,8613.5,512,59.4,Could not extract valid JSON
+meta-llama/Llama-3.2-1B-Instruct,2,0.3,2,funcall_search_multi,function_calling,medium,True,False,430.9,27,62.7,"Schema validation: {'name': 'search_web', 'arguments': {'query': 'best restaurants in NYC', 'num_results': '5'}} is not"
+meta-llama/Llama-3.2-1B-Instruct,2,0.3,3,funcall_search_multi,function_calling,medium,True,False,481.6,27,56.1,"Schema validation: {'name': 'search_web', 'arguments': {'query': 'best restaurants in NYC', 'num_results': '5'}} is not"
+meta-llama/Llama-3.2-1B-Instruct,2,0.3,1,funcall_database_query,function_calling,hard,True,True,808.7,44,54.4,
+meta-llama/Llama-3.2-1B-Instruct,2,0.3,2,funcall_database_query,function_calling,hard,True,True,778.1,44,56.5,
+meta-llama/Llama-3.2-1B-Instruct,2,0.3,3,funcall_database_query,function_calling,hard,True,True,824.9,44,53.3,
+meta-llama/Llama-3.2-1B-Instruct,2,0.3,1,extract_business_card,extraction,easy,True,True,1043.6,58,55.6,
+meta-llama/Llama-3.2-1B-Instruct,2,0.3,2,extract_business_card,extraction,easy,True,True,885.5,58,65.5,
+meta-llama/Llama-3.2-1B-Instruct,2,0.3,3,extract_business_card,extraction,easy,True,True,898.1,58,64.6,
+meta-llama/Llama-3.2-1B-Instruct,2,0.3,1,extract_receipt,extraction,medium,True,True,2467.7,167,67.7,
+meta-llama/Llama-3.2-1B-Instruct,2,0.3,2,extract_receipt,extraction,medium,True,True,2690.0,167,62.1,
+meta-llama/Llama-3.2-1B-Instruct,2,0.3,3,extract_receipt,extraction,medium,True,True,2735.2,167,61.1,
+meta-llama/Llama-3.2-1B-Instruct,2,0.3,1,extract_api_log,extraction,hard,True,True,1951.9,123,63.0,
+meta-llama/Llama-3.2-1B-Instruct,2,0.3,2,extract_api_log,extraction,hard,True,True,1918.8,123,64.1,
+meta-llama/Llama-3.2-1B-Instruct,2,0.3,3,extract_api_log,extraction,hard,True,True,1837.4,121,65.9,
+meta-llama/Llama-3.2-1B-Instruct,2,0.7,1,json_simple_person,json_generation,easy,True,False,604.0,40,66.2,"Schema validation: '35' is not of type 'number'
+
+Failed validating 'type' in schema['properties']['age']:
+    {'type': "
+meta-llama/Llama-3.2-1B-Instruct,2,0.7,2,json_simple_person,json_generation,easy,True,True,610.3,41,67.2,
+meta-llama/Llama-3.2-1B-Instruct,2,0.7,3,json_simple_person,json_generation,easy,True,True,600.8,40,66.6,
+meta-llama/Llama-3.2-1B-Instruct,2,0.7,1,json_simple_product,json_generation,easy,True,True,652.9,43,65.9,
+meta-llama/Llama-3.2-1B-Instruct,2,0.7,2,json_simple_product,json_generation,easy,True,True,586.1,39,66.5,
+meta-llama/Llama-3.2-1B-Instruct,2,0.7,3,json_simple_product,json_generation,easy,True,True,601.5,40,66.5,
+meta-llama/Llama-3.2-1B-Instruct,2,0.7,1,json_nested_address,json_generation,medium,True,True,914.9,60,65.6,
+meta-llama/Llama-3.2-1B-Instruct,2,0.7,2,json_nested_address,json_generation,medium,True,True,861.5,57,66.2,
+meta-llama/Llama-3.2-1B-Instruct,2,0.7,3,json_nested_address,json_generation,medium,True,True,910.2,60,65.9,
+meta-llama/Llama-3.2-1B-Instruct,2,0.7,1,json_array_orders,json_generation,medium,True,True,2140.9,143,66.8,
+meta-llama/Llama-3.2-1B-Instruct,2,0.7,2,json_array_orders,json_generation,medium,True,True,2107.1,139,66.0,
+meta-llama/Llama-3.2-1B-Instruct,2,0.7,3,json_array_orders,json_generation,medium,True,True,2126.5,137,64.4,
+meta-llama/Llama-3.2-1B-Instruct,2,0.7,1,json_complex_api,json_generation,hard,True,False,2644.0,169,63.9,"Schema validation: 'metadata' is a required property
+
+Failed validating 'required' in schema:
+    {'type': 'object',
+  "
+meta-llama/Llama-3.2-1B-Instruct,2,0.7,2,json_complex_api,json_generation,hard,True,False,2104.2,140,66.5,"Schema validation: 'metadata' is a required property
+
+Failed validating 'required' in schema:
+    {'type': 'object',
+  "
+meta-llama/Llama-3.2-1B-Instruct,2,0.7,3,json_complex_api,json_generation,hard,True,False,2671.2,175,65.5,"Schema validation: 'metadata' is a required property
+
+Failed validating 'required' in schema:
+    {'type': 'object',
+  "
+meta-llama/Llama-3.2-1B-Instruct,2,0.7,1,schema_weather,schema_adherence,easy,True,True,680.3,45,66.1,
+meta-llama/Llama-3.2-1B-Instruct,2,0.7,2,schema_weather,schema_adherence,easy,True,True,1886.7,125,66.3,
+meta-llama/Llama-3.2-1B-Instruct,2,0.7,3,schema_weather,schema_adherence,easy,True,True,621.8,41,65.9,
+meta-llama/Llama-3.2-1B-Instruct,2,0.7,1,schema_database_record,schema_adherence,medium,True,False,1087.2,72,66.2,"Schema validation: Additional properties are not allowed ('additionalProperties' was unexpected)
+
+Failed validating 'ad"
+meta-llama/Llama-3.2-1B-Instruct,2,0.7,2,schema_database_record,schema_adherence,medium,True,False,1305.7,85,65.1,"Schema validation: Additional properties are not allowed ('additionalProperties' was unexpected)
+
+Failed validating 'ad"
+meta-llama/Llama-3.2-1B-Instruct,2,0.7,3,schema_database_record,schema_adherence,medium,True,False,984.4,63,64.0,"Schema validation: Additional properties are not allowed ('additionalProperties' was unexpected)
+
+Failed validating 'ad"
+meta-llama/Llama-3.2-1B-Instruct,2,0.7,1,schema_config_file,schema_adherence,hard,True,False,1611.7,105,65.1,"Schema validation: '' is not one of ['debug', 'info', 'warn', 'error']
+
+Failed validating 'enum' in schema['properties'"
+meta-llama/Llama-3.2-1B-Instruct,2,0.7,2,schema_config_file,schema_adherence,hard,True,True,2289.6,152,66.4,
+meta-llama/Llama-3.2-1B-Instruct,2,0.7,3,schema_config_file,schema_adherence,hard,True,False,1756.4,117,66.6,"Schema validation: '' is not one of ['debug', 'info', 'warn', 'error']
+
+Failed validating 'enum' in schema['properties'"
+meta-llama/Llama-3.2-1B-Instruct,2,0.7,1,funcall_get_weather,function_calling,easy,True,True,387.8,25,64.5,
+meta-llama/Llama-3.2-1B-Instruct,2,0.7,2,funcall_get_weather,function_calling,easy,True,True,387.1,25,64.6,
+meta-llama/Llama-3.2-1B-Instruct,2,0.7,3,funcall_get_weather,function_calling,easy,True,True,380.1,25,65.8,
+meta-llama/Llama-3.2-1B-Instruct,2,0.7,1,funcall_search_multi,function_calling,medium,False,False,2592.2,175,67.5,Could not extract valid JSON
+meta-llama/Llama-3.2-1B-Instruct,2,0.7,2,funcall_search_multi,function_calling,medium,True,False,563.1,38,67.5,"Schema validation: {'name': 'search_web', 'parameters': {'query': 'best restaurants in NYC', 'num_results': '5', 'requi"
+meta-llama/Llama-3.2-1B-Instruct,2,0.7,3,funcall_search_multi,function_calling,medium,False,False,1509.8,102,67.6,Could not extract valid JSON
+meta-llama/Llama-3.2-1B-Instruct,2,0.7,1,funcall_database_query,function_calling,hard,True,True,639.1,43,67.3,
+meta-llama/Llama-3.2-1B-Instruct,2,0.7,2,funcall_database_query,function_calling,hard,True,True,581.1,39,67.1,
+meta-llama/Llama-3.2-1B-Instruct,2,0.7,3,funcall_database_query,function_calling,hard,True,True,710.8,48,67.5,
+meta-llama/Llama-3.2-1B-Instruct,2,0.7,1,extract_business_card,extraction,easy,True,True,844.4,58,68.7,
+meta-llama/Llama-3.2-1B-Instruct,2,0.7,2,extract_business_card,extraction,easy,True,True,849.8,58,68.3,
+meta-llama/Llama-3.2-1B-Instruct,2,0.7,3,extract_business_card,extraction,easy,True,True,830.2,57,68.7,
+meta-llama/Llama-3.2-1B-Instruct,2,0.7,1,extract_receipt,extraction,medium,True,True,2455.6,167,68.0,
+meta-llama/Llama-3.2-1B-Instruct,2,0.7,2,extract_receipt,extraction,medium,True,True,2449.7,167,68.2,
+meta-llama/Llama-3.2-1B-Instruct,2,0.7,3,extract_receipt,extraction,medium,True,True,2461.3,167,67.9,
+meta-llama/Llama-3.2-1B-Instruct,2,0.7,1,extract_api_log,extraction,hard,True,False,1852.2,126,68.0,"Schema validation: [{'timestamp': '2026-05-05T10:23:45.678Z', 'method': 'POST', 'path': '/api/v2/users/authenticate', '"
+meta-llama/Llama-3.2-1B-Instruct,2,0.7,2,extract_api_log,extraction,hard,True,True,1778.3,121,68.0,
+meta-llama/Llama-3.2-1B-Instruct,2,0.7,3,extract_api_log,extraction,hard,True,True,1808.9,123,68.0,

@@ -1,0 +1,437 @@
+[
+  {
+    "model": "Llama-1B",
+    "decoder": "native",
+    "task_id": "extract_business_card",
+    "difficulty": "easy",
+    "content_accuracy": 0.7,
+    "function_correct": "False",
+    "params_present": "False",
+    "output": "{'name': 'John Smith', 'phone': '555 123 4567', 'email': 'john.smith@techcorp.com', 'company': 'TechCorp Inc.', 'title': 'Senior Software Engineer'}",
+    "prompt": "Extract the contact information from the following text into a JSON object with fields: name, phone, email, company, title.\n\nText: \"John Smith is a Senior Software Engineer at TechCorp Inc. You can reach him at john.smith@techcorp.com or call (555) 123-4567.\"",
+    "expected": {
+      "name": "John Smith",
+      "phone": "(555) 123-4567",
+      "email": "john.smith@techcorp.com",
+      "company": "TechCorp Inc",
+      "title": "Senior Software Engineer"
+    }
+  },
+  {
+    "model": "Llama-1B",
+    "decoder": "outlines",
+    "task_id": "funcall_search_multi",
+    "difficulty": "medium",
+    "content_accuracy": 0.2,
+    "function_correct": "False",
+    "params_present": "False",
+    "output": "[{'name': 'search_web', 'arguments': {'query': 'restaurants in NYC', 'num_results': 10}}]",
+    "prompt": "You are a helpful assistant with access to the following functions:\n\n1. {\"name\": \"search_web\", \"description\": \"Search the web for information\", \"parameters\": {\"type\": \"object\", \"properties\": {\"query\": {\"type\": \"string\"}, \"num_results\": {\"type\": \"integer\", \"default\": 10}}, \"required\": [\"query\"]}}\n\n2. {\"name\": \"send_email\", \"description\": \"Send an email\", \"parameters\": {\"type\": \"object\", \"properties\": {\"to\": {\"type\": \"string\"}, \"subject\": {\"type\": \"string\"}, \"body\": {\"type\": \"string\"}}, \"required\": [\"to\", \"subject\", \"body\"]}}\n\nThe user asks: \"Search for the best restaurants in NYC and email the results to john@example.com\"\n\nRespond with the appropriate function call(s) in JSON format. If multiple calls are needed, use an array. Use the format: {\"name\": \"...\", \"arguments\": {...}}",
+    "expected": [
+      "search_web",
+      "send_email"
+    ]
+  },
+  {
+    "model": "Llama-1B",
+    "decoder": "outlines",
+    "task_id": "extract_business_card",
+    "difficulty": "easy",
+    "content_accuracy": 0.7,
+    "function_correct": "False",
+    "params_present": "False",
+    "output": "{'name': 'John Smith', 'phone': '555-123-4567', 'email': 'john.smith@techcorp.com', 'company': 'TechCorp Inc.', 'title': 'Senior Software Engineer'}",
+    "prompt": "Extract the contact information from the following text into a JSON object with fields: name, phone, email, company, title.\n\nText: \"John Smith is a Senior Software Engineer at TechCorp Inc. You can reach him at john.smith@techcorp.com or call (555) 123-4567.\"",
+    "expected": {
+      "name": "John Smith",
+      "phone": "(555) 123-4567",
+      "email": "john.smith@techcorp.com",
+      "company": "TechCorp Inc",
+      "title": "Senior Software Engineer"
+    }
+  },
+  {
+    "model": "Llama-1B",
+    "decoder": "xgrammar",
+    "task_id": "extract_business_card",
+    "difficulty": "easy",
+    "content_accuracy": 0.7,
+    "function_correct": "False",
+    "params_present": "False",
+    "output": "{'name': 'John Smith', 'phone': '555 123 4567', 'email': 'john.smith@techcorp.com', 'company': 'TechCorp Inc.', 'title': 'Senior Software Engineer'}",
+    "prompt": "Extract the contact information from the following text into a JSON object with fields: name, phone, email, company, title.\n\nText: \"John Smith is a Senior Software Engineer at TechCorp Inc. You can reach him at john.smith@techcorp.com or call (555) 123-4567.\"",
+    "expected": {
+      "name": "John Smith",
+      "phone": "(555) 123-4567",
+      "email": "john.smith@techcorp.com",
+      "company": "TechCorp Inc",
+      "title": "Senior Software Engineer"
+    }
+  },
+  {
+    "model": "Llama-3B",
+    "decoder": "native",
+    "task_id": "funcall_database_query",
+    "difficulty": "hard",
+    "content_accuracy": 0.875,
+    "function_correct": "True",
+    "params_present": "False",
+    "output": "{'name': 'query_database', 'arguments': {'query': 'SELECT customer_id, revenue FROM customers ORDER BY revenue DESC LIMIT 50', 'database': 'production', 'format': 'csv'}}",
+    "prompt": "You are a helpful assistant with access to the following function:\n\n{\"name\": \"query_database\", \"description\": \"Execute a SQL query on the database\", \"parameters\": {\"type\": \"object\", \"properties\": {\"query\": {\"type\": \"string\", \"description\": \"SQL query to execute\"}, \"database\": {\"type\": \"string\", \"enum\": [\"production\", \"staging\", \"analytics\"]}, \"limit\": {\"type\": \"integer\", \"default\": 100, \"maximum\": 1000}, \"format\": {\"type\": \"string\", \"enum\": [\"json\", \"csv\"], \"default\": \"json\"}}, \"required\": [\"query\", \"database\"]}}\n\nThe user asks: \"Get me the top 50 customers by revenue from the production database in CSV format\"\n\nRespond with a function call in JSON format using: {\"name\": \"...\", \"arguments\": {...}}",
+    "expected": [
+      "query",
+      "database",
+      "limit",
+      "format"
+    ]
+  },
+  {
+    "model": "Llama-3B",
+    "decoder": "native",
+    "task_id": "extract_business_card",
+    "difficulty": "easy",
+    "content_accuracy": 0.9,
+    "function_correct": "False",
+    "params_present": "False",
+    "output": "{'name': 'John Smith', 'phone': '(555) 123-4567', 'email': 'john.smith@techcorp.com', 'company': 'TechCorp Inc.', 'title': 'Senior Software Engineer'}",
+    "prompt": "Extract the contact information from the following text into a JSON object with fields: name, phone, email, company, title.\n\nText: \"John Smith is a Senior Software Engineer at TechCorp Inc. You can reach him at john.smith@techcorp.com or call (555) 123-4567.\"",
+    "expected": {
+      "name": "John Smith",
+      "phone": "(555) 123-4567",
+      "email": "john.smith@techcorp.com",
+      "company": "TechCorp Inc",
+      "title": "Senior Software Engineer"
+    }
+  },
+  {
+    "model": "Llama-3B",
+    "decoder": "outlines",
+    "task_id": "funcall_database_query",
+    "difficulty": "hard",
+    "content_accuracy": 0.875,
+    "function_correct": "True",
+    "params_present": "False",
+    "output": "{'name': 'query_database', 'arguments': {'query': 'SELECT customer_id, revenue FROM customers ORDER BY revenue DESC LIMIT 50', 'database': 'production', 'format': 'csv'}}",
+    "prompt": "You are a helpful assistant with access to the following function:\n\n{\"name\": \"query_database\", \"description\": \"Execute a SQL query on the database\", \"parameters\": {\"type\": \"object\", \"properties\": {\"query\": {\"type\": \"string\", \"description\": \"SQL query to execute\"}, \"database\": {\"type\": \"string\", \"enum\": [\"production\", \"staging\", \"analytics\"]}, \"limit\": {\"type\": \"integer\", \"default\": 100, \"maximum\": 1000}, \"format\": {\"type\": \"string\", \"enum\": [\"json\", \"csv\"], \"default\": \"json\"}}, \"required\": [\"query\", \"database\"]}}\n\nThe user asks: \"Get me the top 50 customers by revenue from the production database in CSV format\"\n\nRespond with a function call in JSON format using: {\"name\": \"...\", \"arguments\": {...}}",
+    "expected": [
+      "query",
+      "database",
+      "limit",
+      "format"
+    ]
+  },
+  {
+    "model": "Llama-3B",
+    "decoder": "xgrammar",
+    "task_id": "funcall_database_query",
+    "difficulty": "hard",
+    "content_accuracy": 0.875,
+    "function_correct": "True",
+    "params_present": "False",
+    "output": "{'name': 'query_database', 'arguments': {'query': 'SELECT customer_id, revenue FROM customers ORDER BY revenue DESC LIMIT 50', 'database': 'production', 'format': 'csv'}}",
+    "prompt": "You are a helpful assistant with access to the following function:\n\n{\"name\": \"query_database\", \"description\": \"Execute a SQL query on the database\", \"parameters\": {\"type\": \"object\", \"properties\": {\"query\": {\"type\": \"string\", \"description\": \"SQL query to execute\"}, \"database\": {\"type\": \"string\", \"enum\": [\"production\", \"staging\", \"analytics\"]}, \"limit\": {\"type\": \"integer\", \"default\": 100, \"maximum\": 1000}, \"format\": {\"type\": \"string\", \"enum\": [\"json\", \"csv\"], \"default\": \"json\"}}, \"required\": [\"query\", \"database\"]}}\n\nThe user asks: \"Get me the top 50 customers by revenue from the production database in CSV format\"\n\nRespond with a function call in JSON format using: {\"name\": \"...\", \"arguments\": {...}}",
+    "expected": [
+      "query",
+      "database",
+      "limit",
+      "format"
+    ]
+  },
+  {
+    "model": "Llama-3B",
+    "decoder": "xgrammar",
+    "task_id": "extract_business_card",
+    "difficulty": "easy",
+    "content_accuracy": 0.9,
+    "function_correct": "False",
+    "params_present": "False",
+    "output": "{'name': 'John Smith', 'phone': '(555) 123-4567', 'email': 'john.smith@techcorp.com', 'company': 'TechCorp Inc.', 'title': 'Senior Software Engineer'}",
+    "prompt": "Extract the contact information from the following text into a JSON object with fields: name, phone, email, company, title.\n\nText: \"John Smith is a Senior Software Engineer at TechCorp Inc. You can reach him at john.smith@techcorp.com or call (555) 123-4567.\"",
+    "expected": {
+      "name": "John Smith",
+      "phone": "(555) 123-4567",
+      "email": "john.smith@techcorp.com",
+      "company": "TechCorp Inc",
+      "title": "Senior Software Engineer"
+    }
+  },
+  {
+    "model": "Qwen-0.6B",
+    "decoder": "native",
+    "task_id": "funcall_search_multi",
+    "difficulty": "medium",
+    "content_accuracy": 0.2,
+    "function_correct": "False",
+    "params_present": "False",
+    "output": "[{'name': 'search_web', 'arguments': {'query': 'best restaurants in NYC', 'num_results': 10}}]",
+    "prompt": "You are a helpful assistant with access to the following functions:\n\n1. {\"name\": \"search_web\", \"description\": \"Search the web for information\", \"parameters\": {\"type\": \"object\", \"properties\": {\"query\": {\"type\": \"string\"}, \"num_results\": {\"type\": \"integer\", \"default\": 10}}, \"required\": [\"query\"]}}\n\n2. {\"name\": \"send_email\", \"description\": \"Send an email\", \"parameters\": {\"type\": \"object\", \"properties\": {\"to\": {\"type\": \"string\"}, \"subject\": {\"type\": \"string\"}, \"body\": {\"type\": \"string\"}}, \"required\": [\"to\", \"subject\", \"body\"]}}\n\nThe user asks: \"Search for the best restaurants in NYC and email the results to john@example.com\"\n\nRespond with the appropriate function call(s) in JSON format. If multiple calls are needed, use an array. Use the format: {\"name\": \"...\", \"arguments\": {...}}",
+    "expected": [
+      "search_web",
+      "send_email"
+    ]
+  },
+  {
+    "model": "Qwen-0.6B",
+    "decoder": "native",
+    "task_id": "extract_business_card",
+    "difficulty": "easy",
+    "content_accuracy": 0.9,
+    "function_correct": "False",
+    "params_present": "False",
+    "output": "{'name': 'John Smith', 'phone': '(555) 123-4567', 'email': 'john.smith@techcorp.com', 'company': 'TechCorp Inc.', 'title': 'Senior Software Engineer'}",
+    "prompt": "Extract the contact information from the following text into a JSON object with fields: name, phone, email, company, title.\n\nText: \"John Smith is a Senior Software Engineer at TechCorp Inc. You can reach him at john.smith@techcorp.com or call (555) 123-4567.\"",
+    "expected": {
+      "name": "John Smith",
+      "phone": "(555) 123-4567",
+      "email": "john.smith@techcorp.com",
+      "company": "TechCorp Inc",
+      "title": "Senior Software Engineer"
+    }
+  },
+  {
+    "model": "Qwen-0.6B",
+    "decoder": "outlines",
+    "task_id": "funcall_search_multi",
+    "difficulty": "medium",
+    "content_accuracy": 0.2,
+    "function_correct": "False",
+    "params_present": "False",
+    "output": "[{'name': 'search_web', 'arguments': {'query': 'best restaurants in NYC', 'num_results': 10}}]",
+    "prompt": "You are a helpful assistant with access to the following functions:\n\n1. {\"name\": \"search_web\", \"description\": \"Search the web for information\", \"parameters\": {\"type\": \"object\", \"properties\": {\"query\": {\"type\": \"string\"}, \"num_results\": {\"type\": \"integer\", \"default\": 10}}, \"required\": [\"query\"]}}\n\n2. {\"name\": \"send_email\", \"description\": \"Send an email\", \"parameters\": {\"type\": \"object\", \"properties\": {\"to\": {\"type\": \"string\"}, \"subject\": {\"type\": \"string\"}, \"body\": {\"type\": \"string\"}}, \"required\": [\"to\", \"subject\", \"body\"]}}\n\nThe user asks: \"Search for the best restaurants in NYC and email the results to john@example.com\"\n\nRespond with the appropriate function call(s) in JSON format. If multiple calls are needed, use an array. Use the format: {\"name\": \"...\", \"arguments\": {...}}",
+    "expected": [
+      "search_web",
+      "send_email"
+    ]
+  },
+  {
+    "model": "Qwen-0.6B",
+    "decoder": "outlines",
+    "task_id": "extract_business_card",
+    "difficulty": "easy",
+    "content_accuracy": 0.7,
+    "function_correct": "False",
+    "params_present": "False",
+    "output": "{'name': 'John Smith', 'phone': '555-123-4567', 'email': 'john.smith@techcorp.com', 'company': 'TechCorp Inc.', 'title': 'Senior Software Engineer'}",
+    "prompt": "Extract the contact information from the following text into a JSON object with fields: name, phone, email, company, title.\n\nText: \"John Smith is a Senior Software Engineer at TechCorp Inc. You can reach him at john.smith@techcorp.com or call (555) 123-4567.\"",
+    "expected": {
+      "name": "John Smith",
+      "phone": "(555) 123-4567",
+      "email": "john.smith@techcorp.com",
+      "company": "TechCorp Inc",
+      "title": "Senior Software Engineer"
+    }
+  },
+  {
+    "model": "Qwen-0.6B",
+    "decoder": "xgrammar",
+    "task_id": "funcall_search_multi",
+    "difficulty": "medium",
+    "content_accuracy": 0.2,
+    "function_correct": "False",
+    "params_present": "False",
+    "output": "[{'name': 'search_web', 'arguments': {'query': 'best restaurants in NYC', 'num_results': 5}}]",
+    "prompt": "You are a helpful assistant with access to the following functions:\n\n1. {\"name\": \"search_web\", \"description\": \"Search the web for information\", \"parameters\": {\"type\": \"object\", \"properties\": {\"query\": {\"type\": \"string\"}, \"num_results\": {\"type\": \"integer\", \"default\": 10}}, \"required\": [\"query\"]}}\n\n2. {\"name\": \"send_email\", \"description\": \"Send an email\", \"parameters\": {\"type\": \"object\", \"properties\": {\"to\": {\"type\": \"string\"}, \"subject\": {\"type\": \"string\"}, \"body\": {\"type\": \"string\"}}, \"required\": [\"to\", \"subject\", \"body\"]}}\n\nThe user asks: \"Search for the best restaurants in NYC and email the results to john@example.com\"\n\nRespond with the appropriate function call(s) in JSON format. If multiple calls are needed, use an array. Use the format: {\"name\": \"...\", \"arguments\": {...}}",
+    "expected": [
+      "search_web",
+      "send_email"
+    ]
+  },
+  {
+    "model": "Qwen-0.6B",
+    "decoder": "xgrammar",
+    "task_id": "extract_business_card",
+    "difficulty": "easy",
+    "content_accuracy": 0.9,
+    "function_correct": "False",
+    "params_present": "False",
+    "output": "{'name': 'John Smith', 'phone': '(555) 123-4567', 'email': 'john.smith@techcorp.com', 'company': 'TechCorp Inc.', 'title': 'Senior Software Engineer'}",
+    "prompt": "Extract the contact information from the following text into a JSON object with fields: name, phone, email, company, title.\n\nText: \"John Smith is a Senior Software Engineer at TechCorp Inc. You can reach him at john.smith@techcorp.com or call (555) 123-4567.\"",
+    "expected": {
+      "name": "John Smith",
+      "phone": "(555) 123-4567",
+      "email": "john.smith@techcorp.com",
+      "company": "TechCorp Inc",
+      "title": "Senior Software Engineer"
+    }
+  },
+  {
+    "model": "Qwen-4B",
+    "decoder": "native",
+    "task_id": "extract_business_card",
+    "difficulty": "easy",
+    "content_accuracy": 0.9,
+    "function_correct": "False",
+    "params_present": "False",
+    "output": "{'name': 'John Smith', 'phone': '(555) 123-4567', 'email': 'john.smith@techcorp.com', 'company': 'TechCorp Inc.', 'title': 'Senior Software Engineer'}",
+    "prompt": "Extract the contact information from the following text into a JSON object with fields: name, phone, email, company, title.\n\nText: \"John Smith is a Senior Software Engineer at TechCorp Inc. You can reach him at john.smith@techcorp.com or call (555) 123-4567.\"",
+    "expected": {
+      "name": "John Smith",
+      "phone": "(555) 123-4567",
+      "email": "john.smith@techcorp.com",
+      "company": "TechCorp Inc",
+      "title": "Senior Software Engineer"
+    }
+  },
+  {
+    "model": "Qwen-4B",
+    "decoder": "outlines",
+    "task_id": "extract_business_card",
+    "difficulty": "easy",
+    "content_accuracy": 0.9,
+    "function_correct": "False",
+    "params_present": "False",
+    "output": "{'name': 'John Smith', 'phone': '(555) 123-4567', 'email': 'john.smith@techcorp.com', 'company': 'TechCorp Inc.', 'title': 'Senior Software Engineer'}",
+    "prompt": "Extract the contact information from the following text into a JSON object with fields: name, phone, email, company, title.\n\nText: \"John Smith is a Senior Software Engineer at TechCorp Inc. You can reach him at john.smith@techcorp.com or call (555) 123-4567.\"",
+    "expected": {
+      "name": "John Smith",
+      "phone": "(555) 123-4567",
+      "email": "john.smith@techcorp.com",
+      "company": "TechCorp Inc",
+      "title": "Senior Software Engineer"
+    }
+  },
+  {
+    "model": "Qwen-4B",
+    "decoder": "outlines",
+    "task_id": "extract_receipt",
+    "difficulty": "medium",
+    "content_accuracy": 0.99,
+    "function_correct": "False",
+    "params_present": "False",
+    "output": "{'store_name': 'WALMART SUPERCENTER', 'date': '03/15/2026', 'items': [{'name': 'Milk 2%', 'price': 4.98}, {'name': 'Sourdough Bread', 'price': 3.49}, {'name': 'Organic Eggs 12ct', 'price': 5.99}, {'name': 'Avocados 3ct', 'price': 4.47}], 'subtotal': 18.93, 'tax': 1.56, 'total': 20.49}",
+    "prompt": "Extract receipt information from the following text into a JSON object with: store_name, date, items (array of objects with name and price), subtotal, tax, total.\n\nText: \"WALMART SUPERCENTER\nDate: 03/15/2026\nMilk 2% 1gal ........... $4.98\nSourdough Bread ........ $3.49\nOrganic Eggs 12ct ...... $5.99\nAvocados 3ct ........... $4.47\nSubtotal: $18.93\nTax (8.25%): $1.56\nTOTAL: $20.49\"",
+    "expected": {
+      "store_name": "WALMART SUPERCENTER",
+      "date": "03/15/2026",
+      "items": [
+        {
+          "name": "Milk 2% 1gal",
+          "price": 4.98
+        },
+        {
+          "name": "Sourdough Bread",
+          "price": 3.49
+        },
+        {
+          "name": "Organic Eggs 12ct",
+          "price": 5.99
+        },
+        {
+          "name": "Avocados 3ct",
+          "price": 4.47
+        }
+      ],
+      "subtotal": 18.93,
+      "tax": 1.56,
+      "total": 20.49
+    }
+  },
+  {
+    "model": "Qwen-4B",
+    "decoder": "xgrammar",
+    "task_id": "extract_business_card",
+    "difficulty": "easy",
+    "content_accuracy": 0.9,
+    "function_correct": "False",
+    "params_present": "False",
+    "output": "{'name': 'John Smith', 'phone': '(555) 123-4567', 'email': 'john.smith@techcorp.com', 'company': 'TechCorp Inc.', 'title': 'Senior Software Engineer'}",
+    "prompt": "Extract the contact information from the following text into a JSON object with fields: name, phone, email, company, title.\n\nText: \"John Smith is a Senior Software Engineer at TechCorp Inc. You can reach him at john.smith@techcorp.com or call (555) 123-4567.\"",
+    "expected": {
+      "name": "John Smith",
+      "phone": "(555) 123-4567",
+      "email": "john.smith@techcorp.com",
+      "company": "TechCorp Inc",
+      "title": "Senior Software Engineer"
+    }
+  },
+  {
+    "model": "Phi-4-mini",
+    "decoder": "native",
+    "task_id": "extract_business_card",
+    "difficulty": "easy",
+    "content_accuracy": 0.9,
+    "function_correct": "False",
+    "params_present": "False",
+    "output": "{'name': 'John Smith', 'phone': '(555) 123-4567', 'email': 'john.smith@techcorp.com', 'company': 'TechCorp Inc.', 'title': 'Senior Software Engineer'}",
+    "prompt": "Extract the contact information from the following text into a JSON object with fields: name, phone, email, company, title.\n\nText: \"John Smith is a Senior Software Engineer at TechCorp Inc. You can reach him at john.smith@techcorp.com or call (555) 123-4567.\"",
+    "expected": {
+      "name": "John Smith",
+      "phone": "(555) 123-4567",
+      "email": "john.smith@techcorp.com",
+      "company": "TechCorp Inc",
+      "title": "Senior Software Engineer"
+    }
+  },
+  {
+    "model": "Phi-4-mini",
+    "decoder": "outlines",
+    "task_id": "extract_business_card",
+    "difficulty": "easy",
+    "content_accuracy": 0.9,
+    "function_correct": "False",
+    "params_present": "False",
+    "output": "{'name': 'John Smith', 'phone': '(555) 123-4567', 'email': 'john.smith@techcorp.com', 'company': 'TechCorp Inc.', 'title': 'Senior Software Engineer'}",
+    "prompt": "Extract the contact information from the following text into a JSON object with fields: name, phone, email, company, title.\n\nText: \"John Smith is a Senior Software Engineer at TechCorp Inc. You can reach him at john.smith@techcorp.com or call (555) 123-4567.\"",
+    "expected": {
+      "name": "John Smith",
+      "phone": "(555) 123-4567",
+      "email": "john.smith@techcorp.com",
+      "company": "TechCorp Inc",
+      "title": "Senior Software Engineer"
+    }
+  },
+  {
+    "model": "Phi-4-mini",
+    "decoder": "outlines",
+    "task_id": "extract_receipt",
+    "difficulty": "medium",
+    "content_accuracy": 0.99,
+    "function_correct": "False",
+    "params_present": "False",
+    "output": "{'store_name': 'WALMART SUPERCENTER', 'date': '03/15/2026', 'items': [{'name': 'Milk 2%', 'price': 4.98}, {'name': 'Sourdough Bread', 'price': 3.49}, {'name': 'Organic Eggs 12ct', 'price': 5.99}, {'name': 'Avocados 3ct', 'price': 4.47}], 'subtotal': 18.93, 'tax': 1.56, 'total': 20.49}",
+    "prompt": "Extract receipt information from the following text into a JSON object with: store_name, date, items (array of objects with name and price), subtotal, tax, total.\n\nText: \"WALMART SUPERCENTER\nDate: 03/15/2026\nMilk 2% 1gal ........... $4.98\nSourdough Bread ........ $3.49\nOrganic Eggs 12ct ...... $5.99\nAvocados 3ct ........... $4.47\nSubtotal: $18.93\nTax (8.25%): $1.56\nTOTAL: $20.49\"",
+    "expected": {
+      "store_name": "WALMART SUPERCENTER",
+      "date": "03/15/2026",
+      "items": [
+        {
+          "name": "Milk 2% 1gal",
+          "price": 4.98
+        },
+        {
+          "name": "Sourdough Bread",
+          "price": 3.49
+        },
+        {
+          "name": "Organic Eggs 12ct",
+          "price": 5.99
+        },
+        {
+          "name": "Avocados 3ct",
+          "price": 4.47
+        }
+      ],
+      "subtotal": 18.93,
+      "tax": 1.56,
+      "total": 20.49
+    }
+  },
+  {
+    "model": "Phi-4-mini",
+    "decoder": "xgrammar",
+    "task_id": "extract_business_card",
+    "difficulty": "easy",
+    "content_accuracy": 0.9,
+    "function_correct": "False",
+    "params_present": "False",
+    "output": "{'name': 'John Smith', 'phone': '(555) 123-4567', 'email': 'john.smith@techcorp.com', 'company': 'TechCorp Inc.', 'title': 'Senior Software Engineer'}",
+    "prompt": "Extract the contact information from the following text into a JSON object with fields: name, phone, email, company, title.\n\nText: \"John Smith is a Senior Software Engineer at TechCorp Inc. You can reach him at john.smith@techcorp.com or call (555) 123-4567.\"",
+    "expected": {
+      "name": "John Smith",
+      "phone": "(555) 123-4567",
+      "email": "john.smith@techcorp.com",
+      "company": "TechCorp Inc",
+      "title": "Senior Software Engineer"
+    }
+  }
+]

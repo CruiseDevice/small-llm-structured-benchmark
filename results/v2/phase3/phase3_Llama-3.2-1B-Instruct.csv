@@ -1,0 +1,49 @@
+model,phase,decoder,temperature,run,task_id,category,difficulty,json_valid,schema_valid,latency_ms,compile_ms,tokens_generated,tokens_per_sec,error
+meta-llama/Llama-3.2-1B-Instruct,3,native,0.0,1,json_simple_person,json_generation,easy,True,True,1382.4,0.0,40,28.9,
+meta-llama/Llama-3.2-1B-Instruct,3,native,0.0,1,json_simple_product,json_generation,easy,True,True,602.3,0.0,39,64.8,
+meta-llama/Llama-3.2-1B-Instruct,3,native,0.0,1,json_nested_address,json_generation,medium,True,True,921.9,0.0,60,65.1,
+meta-llama/Llama-3.2-1B-Instruct,3,native,0.0,1,json_array_orders,json_generation,medium,True,True,2252.5,0.0,146,64.8,
+meta-llama/Llama-3.2-1B-Instruct,3,native,0.0,1,json_complex_api,json_generation,hard,True,False,2149.5,0.0,139,64.7,"Schema validation: 'metadata' is a required property
+
+Failed validating 'required' in schema:
+    {'type': 'object',
+  "
+meta-llama/Llama-3.2-1B-Instruct,3,native,0.0,1,schema_weather,schema_adherence,easy,True,True,687.1,0.0,44,64.0,
+meta-llama/Llama-3.2-1B-Instruct,3,native,0.0,1,schema_database_record,schema_adherence,medium,True,False,1708.5,0.0,85,49.8,"Schema validation: Additional properties are not allowed ('additionalProperties' was unexpected)
+
+Failed validating 'ad"
+meta-llama/Llama-3.2-1B-Instruct,3,native,0.0,1,schema_config_file,schema_adherence,hard,True,True,2211.1,0.0,142,64.2,
+meta-llama/Llama-3.2-1B-Instruct,3,native,0.0,1,funcall_get_weather,function_calling,easy,True,True,393.4,0.0,25,63.5,
+meta-llama/Llama-3.2-1B-Instruct,3,native,0.0,1,funcall_search_multi,function_calling,medium,False,False,7933.6,0.0,512,64.5,Could not extract valid JSON
+meta-llama/Llama-3.2-1B-Instruct,3,native,0.0,1,funcall_database_query,function_calling,hard,True,True,693.2,0.0,44,63.5,
+meta-llama/Llama-3.2-1B-Instruct,3,native,0.0,1,extract_business_card,extraction,easy,True,True,894.2,0.0,58,64.9,
+meta-llama/Llama-3.2-1B-Instruct,3,native,0.0,1,extract_receipt,extraction,medium,True,True,2584.8,0.0,167,64.6,
+meta-llama/Llama-3.2-1B-Instruct,3,native,0.0,1,extract_api_log,extraction,hard,True,True,1908.5,0.0,123,64.4,
+meta-llama/Llama-3.2-1B-Instruct,3,outlines,0.0,1,json_simple_person,json_generation,easy,True,True,4973.5,1033.3,32,6.4,
+meta-llama/Llama-3.2-1B-Instruct,3,outlines,0.0,1,json_simple_product,json_generation,easy,True,True,587.6,1046.9,33,56.2,
+meta-llama/Llama-3.2-1B-Instruct,3,outlines,0.0,1,json_nested_address,json_generation,medium,True,True,782.8,1082.2,45,57.5,
+meta-llama/Llama-3.2-1B-Instruct,3,outlines,0.0,1,json_array_orders,json_generation,medium,True,True,2059.0,1256.2,118,57.3,
+meta-llama/Llama-3.2-1B-Instruct,3,outlines,0.0,1,json_complex_api,json_generation,hard,True,True,2282.8,1606.3,132,57.8,
+meta-llama/Llama-3.2-1B-Instruct,3,outlines,0.0,1,schema_weather,schema_adherence,easy,True,True,435.4,750.5,25,57.4,
+meta-llama/Llama-3.2-1B-Instruct,3,outlines,0.0,1,schema_database_record,schema_adherence,medium,True,True,908.1,1133.8,51,56.2,
+meta-llama/Llama-3.2-1B-Instruct,3,outlines,0.0,1,schema_config_file,schema_adherence,hard,True,True,1352.6,1514.0,77,56.9,
+meta-llama/Llama-3.2-1B-Instruct,3,outlines,0.0,1,funcall_get_weather,function_calling,easy,True,True,444.7,3801.8,25,56.2,
+meta-llama/Llama-3.2-1B-Instruct,3,outlines,0.0,1,funcall_search_multi,function_calling,medium,True,True,499.9,7481.0,28,56.0,
+meta-llama/Llama-3.2-1B-Instruct,3,outlines,0.0,1,funcall_database_query,function_calling,hard,True,True,791.5,3721.4,44,55.6,
+meta-llama/Llama-3.2-1B-Instruct,3,outlines,0.0,1,extract_business_card,extraction,easy,True,True,843.4,1072.0,48,56.9,
+meta-llama/Llama-3.2-1B-Instruct,3,outlines,0.0,1,extract_receipt,extraction,medium,True,True,2234.1,1221.0,128,57.3,
+meta-llama/Llama-3.2-1B-Instruct,3,outlines,0.0,1,extract_api_log,extraction,hard,True,True,1803.0,1050.5,103,57.1,
+meta-llama/Llama-3.2-1B-Instruct,3,xgrammar,0.0,1,json_simple_person,json_generation,easy,True,True,963.8,22.8,37,38.4,
+meta-llama/Llama-3.2-1B-Instruct,3,xgrammar,0.0,1,json_simple_product,json_generation,easy,True,True,611.9,2.0,37,60.5,
+meta-llama/Llama-3.2-1B-Instruct,3,xgrammar,0.0,1,json_nested_address,json_generation,medium,True,True,947.9,2.3,57,60.1,
+meta-llama/Llama-3.2-1B-Instruct,3,xgrammar,0.0,1,json_array_orders,json_generation,medium,True,True,2361.0,2.3,143,60.6,
+meta-llama/Llama-3.2-1B-Instruct,3,xgrammar,0.0,1,json_complex_api,json_generation,hard,True,True,2249.2,3.3,136,60.5,
+meta-llama/Llama-3.2-1B-Instruct,3,xgrammar,0.0,1,schema_weather,schema_adherence,easy,True,True,690.7,3.6,42,60.8,
+meta-llama/Llama-3.2-1B-Instruct,3,xgrammar,0.0,1,schema_database_record,schema_adherence,medium,True,True,1262.3,4.1,77,61.0,
+meta-llama/Llama-3.2-1B-Instruct,3,xgrammar,0.0,1,schema_config_file,schema_adherence,hard,True,True,2357.7,4.2,142,60.2,
+meta-llama/Llama-3.2-1B-Instruct,3,xgrammar,0.0,1,funcall_get_weather,function_calling,easy,True,True,413.6,2.8,25,60.4,
+meta-llama/Llama-3.2-1B-Instruct,3,xgrammar,0.0,1,funcall_search_multi,function_calling,medium,True,True,2004.3,2.9,121,60.4,
+meta-llama/Llama-3.2-1B-Instruct,3,xgrammar,0.0,1,funcall_database_query,function_calling,hard,True,True,734.4,0.4,44,59.9,
+meta-llama/Llama-3.2-1B-Instruct,3,xgrammar,0.0,1,extract_business_card,extraction,easy,True,True,890.5,2.4,54,60.6,
+meta-llama/Llama-3.2-1B-Instruct,3,xgrammar,0.0,1,extract_receipt,extraction,medium,True,True,2688.7,3.0,163,60.6,
+meta-llama/Llama-3.2-1B-Instruct,3,xgrammar,0.0,1,extract_api_log,extraction,hard,True,True,1969.2,3.4,119,60.4,

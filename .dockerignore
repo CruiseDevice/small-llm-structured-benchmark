@@ -1,0 +1,20 @@
+# Don't copy into image — models are downloaded at runtime
+.cache/
+*.safetensors
+*.bin
+*.gguf
+
+# Results are local, not needed in image
+results/
+
+# macOS junk
+.DS_Store
+
+# Git
+.git/
+.gitignore
+
+# Docker itself
+Dockerfile
+build-image.sh
+.dockerignore
