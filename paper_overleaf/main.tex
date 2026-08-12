@@ -30,7 +30,8 @@
        but Reveals a Scale-Dependent Semantic Gap}
 
 % Authors: fill in when submitting
-\author{Akash Chavan}
+\author{Akash Chavan \\
+        \texttt{iakashchavan@gmail.com}}
 
 \begin{document}
 \maketitle
@@ -65,7 +66,7 @@ But this raises a question: does CD actually make model output \emph{correct}, o
 If a model fails to generate a required function call because it does not understand the task, forcing it to produce schema-valid JSON will not fix the underlying misunderstanding.
 
 % Gap in literature
-Existing benchmarks evaluate CD frameworks on a single model size \citep{garg2025jsonschemabench}, leaving open the question of how CD interacts with model scale.
+Existing benchmarks evaluate CD frameworks on a single model size \citep{geng2025jsonschemabench}, leaving open the question of how CD interacts with model scale.
 This question is practically important: if CD can rescue a 1B model, practitioners may not need a 4B model.
 
 % Research question
@@ -97,11 +98,11 @@ Our contributions are:
 
 \subsection{Structured Output Benchmarks}
 % JSONSchemaBench: single model, no size ladder
-% STED: temperature × consistency, no CD
+% STED: consistency metric for structured output, no CD, large models only
 % Renze & Guven: temperature × accuracy, no structured output
-\citet{garg2025jsonschemabench} introduce JSONSchemaBench, evaluating six CD frameworks on structured output tasks.
+\citet{geng2025jsonschemabench} introduce JSONSchemaBench, evaluating six CD frameworks on structured output tasks.
 However, their evaluation uses a single model size and focuses on framework efficiency rather than the interaction between CD and model scale.
-Other work studies the effect of temperature on output consistency \citep{sted2024, renze2024temperature} but does not consider CD or structured output specifically.
+Separate work studies output consistency for structured generation under varying temperature \citep{sted2024} and temperature effects on general problem-solving accuracy \citep{renze2024temperature}, but neither considers constrained decoding or model scale.
 
 % Novelty table
 Table~\ref{tab:novelty} positions our work relative to prior benchmarks.
@@ -134,7 +135,7 @@ Renze \& Guven & $\times$ & $\times$ & Temp.\ $\times$ accuracy \\
 \subsection{Models}
 \label{sec:models}
 
-We select five models representing three families and a controlled size range (0.6B--4B).
+We select five models representing three families and a controlled size range (0.6B--4B): Qwen3 \citep{qwen3technical}, Llama~3.2 \citep{llama32}, and Phi-4-mini \citep{phi4}.
 These are the Phase~2 subset with characterized failure modes from our preliminary baseline study---not a convenience sample.
 
 \begin{table}[h]
@@ -172,7 +173,7 @@ Each task includes a prompt, a JSON schema, and (for extraction and function-cal
 \subsection{Decoding Conditions}
 \label{sec:decoders}
 
-All conditions use greedy decoding ($T=0$, \texttt{do\_sample=False}) for determinism and reproducibility.
+All conditions use greedy decoding ($T=0$, \texttt{do\_sample=False}) via HuggingFace \texttt{transformers} \citep{transformers} for determinism and reproducibility.
 
 \begin{table}[h]
 \centering
@@ -196,7 +197,7 @@ xgrammar & Compiled grammar & Grammar $\to$ bitmask \\
 We evaluate each output along two axes:
 
 \textbf{Axis 1 -- Structural correctness:}
-\emph{Schema validity}: does the parsed output validate against the task's JSON schema (Draft 2020-12)?
+\emph{Schema validity}: does the parsed output validate against the task's JSON schema (Draft 2020-12) \citep{jsonschema2020} using the \texttt{jsonschema} Python library \citep{jsonschema_py}?
 
 \textbf{Axis 2 -- Semantic correctness:}
 \emph{Content accuracy}: for extraction tasks, fraction of field values matching expected answers (0.0--1.0).
