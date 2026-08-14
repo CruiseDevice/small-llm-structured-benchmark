@@ -70,7 +70,7 @@ Existing benchmarks evaluate CD frameworks on a single model size \citep{geng202
 This question is practically important: if CD can rescue a 1B model, practitioners may not need a 4B model.
 
 % Research question
-We ask: \textbf{Does \cd{} flatten the small-model scaling curve for structured output?}
+We ask: \textbf{Does \cd{} remove the scale advantage for structured output---flattening the small-model scaling curve?}
 Specifically, can a constrained 1B model match an unconstrained 3B model?
 Or do failures persist because they are semantic (wrong values, missing intent) rather than structural (wrong types, missing fields), and therefore unreachable by token masking?
 
@@ -104,6 +104,8 @@ Our contributions are:
 However, their evaluation uses a single model size and focuses on framework efficiency rather than the interaction between CD and model scale.
 Separate work studies output consistency for structured generation under varying temperature \citep{sted2024} and temperature effects on general problem-solving accuracy \citep{renze2024temperature}, but neither considers constrained decoding or model scale.
 
+The closest work to ours studies the \emph{semantic} cost of constrained decoding, but from complementary angles. \citet{reddy2026dccd} observe that CD can push generation toward ``locally valid yet semantically incorrect'' trajectories---the same semantic gap we identify---but treat it as a premise to be mitigated, proposing draft-conditioned decoding to repair it, rather than measuring its magnitude or interaction with model scale. \citet{galeone2026correct} report a related reliability gap for 7--9B models on mathematical benchmarks, where CD enforces validity but degrades task accuracy and adds latency; their focus is prompting strategies as a remedy, and the trade-off they observe is efficiency, not the structural--semantic decomposition. Neither work separates structural from semantic correctness along a controlled size ladder, nor identifies the failure archetypes that determine whether CD can rescue an output.
+
 % Novelty table
 Table~\ref{tab:novelty} positions our work relative to prior benchmarks.
 The novelty is the \emph{interaction term}: CD $\times$ model scale.
@@ -119,6 +121,8 @@ The novelty is the \emph{interaction term}: CD $\times$ model scale.
 JSONSchemaBench & \checkmark & $\times$ & Framework efficiency \\
 STED & $\times$ & $\times$ & Temp.\ $\times$ consist. \\
 Renze \& Guven & $\times$ & $\times$ & Temp.\ $\times$ accuracy \\
+DCCD \citep{reddy2026dccd} & \checkmark & $\times$ & Semantic cost repair \\
+Galeone et al.\ \citep{galeone2026correct} & \checkmark & $\times$ & Prompting reliability \\
 \textbf{This work} & \checkmark & \checkmark & CD $\times$ scale \\
 \bottomrule
 \end{tabular}
@@ -331,11 +335,19 @@ On \texttt{funcall\_search\_multi}, the model must emit two function calls (\tex
 Qwen-0.6B emits only \texttt{search\_web} across all decoders (function call score: 0.200 native $\to$ 0.200 CD).
 The schema permits this (\texttt{minItems: 1}), so CD produces schema-valid but semantically incomplete output.
 Token masking cannot inject task understanding.
+This failure is, in principle, the target of draft-conditioned decoding \citep{reddy2026dccd}: an unconstrained draft would include both calls, and conditioning on it could preserve the intent that direct masking cannot supply.
 
 \paragraph{The ``hollow rescue'' phenomenon.}
 On the same task, Llama-1B under XGrammar scores 1.000---both calls present, all parameters present.
 However, the email body reads \texttt{"1.\ 2.\ 3.\ 4.\ 5."}---list structure without content.
 Structural metrics count parameter presence, not parameter quality, masking the semantic gap.
+
+\paragraph{Returning to the motivating question.}
+Section~\ref{sec:intro} asked whether \cd{} flattens the scaling curve---whether a constrained 1B model can match an unconstrained 3B model.
+The answer is yes, and more: under XGrammar, Llama-1B reaches 0.986 content accuracy, \emph{exceeding} Llama-3B's native 0.777.
+But the rescue is not asymmetric: the same constraint lifts Llama-3B from 0.777 to 0.991, so the constrained 1B does not match the constrained 3B---the gap narrows but does not close.
+And on instruction-semantic tasks, Qwen-0.6B best-case 0.943 under XGrammar remains the lowest of all five models: the floor set by scale is lowered, not removed.
+\CD{} rescues form; it does not rescue scale.
 
 %==============================================================================
 % 5. DISCUSSION
@@ -362,7 +374,7 @@ The cheapest reliable configuration for structured output is XGrammar with a 3--
 \label{sec:conclusion}
 
 \CD{} eliminates structural failures across all tested small LLMs, but semantic correctness depends on the failure archetype and model scale.
-Schema conformance is necessary but not sufficient for semantic correctness.
+On our motivating question: a constrained 1B model exceeds an unconstrained 3B model, yet the same constraint rescues the 3B as well---schema conformance is necessary but not sufficient for semantic correctness, and it does not remove the advantage of scale where failures are semantic.
 Future work should extend to MoE architectures, real-world schemas, and richer semantic evaluation.
 
 %==============================================================================
