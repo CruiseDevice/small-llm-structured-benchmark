@@ -15,6 +15,7 @@
 
 % Additional packages
 \usepackage{booktabs}
+\usepackage{amssymb}  % \checkmark in novelty table
 \usepackage{graphicx}
 \usepackage{multirow}
 \usepackage{xcolor}
@@ -179,10 +180,11 @@ Each task includes a prompt, a JSON schema, and (for extraction and function-cal
 
 All conditions use greedy decoding ($T=0$, \texttt{do\_sample=False}) via HuggingFace \texttt{transformers} \citep{transformers} for determinism and reproducibility.
 
-\begin{table}[h]
+\begin{table}[t]
 \centering
 \small
-\begin{tabular}{lll}
+\setlength{\tabcolsep}{3pt}
+\begin{tabular}{@{}lll@{}}
 \toprule
 \textbf{Condition} & \textbf{Approach} & \textbf{Mechanism} \\
 \midrule
