@@ -140,15 +140,14 @@ ax2.bar(x, tp_ol, w3 * 0.92, color=COLORS["outlines"], label="Outlines")
 ax2.bar(x + w3, tp_xg, w3 * 0.92, color=COLORS["xgrammar"], label="XGrammar")
 ax2.set_ylim(0, 72)
 ax2.set_ylabel("Avg throughput (tok/s)", fontsize=6.5)
-# delta labels sit directly above their OWN bar (outlines at x, xgrammar at
-# x + w3): placing the outlines label at the native bar x-centre landed text
-# on the red bar face where it vanished (that was the third bug)
+# delta labels stand VERTICALLY above their own bar: horizontal text is wider
+# than a bar, so centered labels spilled onto the neighboring taller bar and
+# read as sunk behind it (that was the fourth bug)
 for xi, v, d, col in [(x, tp_ol, d_ol, COLORS["outlines"]),
                       (x + w3, tp_xg, d_xg, COLORS["xgrammar"])]:
     for xj, vj, dj in zip(xi, v, d):
-        ax2.annotate(f"{dj:+.0f}%", xy=(xj, vj), xytext=(0, 1), textcoords="offset points",
-                     fontsize=5.2, ha="center", va="bottom", color=col,
-                     bbox=dict(facecolor="white", edgecolor="none", pad=0.5, alpha=0.85))
+        ax2.annotate(f"{dj:+.0f}%", xy=(xj, vj), xytext=(0, 2), textcoords="offset points",
+                     fontsize=5.5, ha="center", va="bottom", color=col, rotation=90)
 ax2.legend(loc="upper right", fontsize=5.5, frameon=False, handlelength=1.1,
            handletextpad=0.4, borderaxespad=0.2)
 
