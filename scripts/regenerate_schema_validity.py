@@ -5,11 +5,17 @@ Data source: results/v2/phase3/phase3_semantic_evaluation_v2.csv (schema_valid
 column, aggregated per model x decoder over 14 tasks). Same source as Table 5.
 
 Design rules (learned the hard way):
-  - log-scale x axis: params span 0.6-4B, linear spacing crushes 0.6/1B together
+  - categorical equally-spaced x axis: a log-scale axis crowds the
+    Llama-3B / Phi-4-mini / Qwen-4B ticks too tightly for legible labels
   - ONE label level on the x axis: model names only (no numeric ticks underneath)
   - y axis capped at 102: a 105% tick on a percentage axis is impossible
   - legend BELOW the axes: the CD lines sit at a flat 100%, so any in-axes
     legend overlaps them (that was the old bug)
+  - Outlines dashed + hollow markers, drawn LAST: it coincides with XGrammar
+    at 100% everywhere; a solid line drawn underneath would be fully hidden
+    (that was the second bug)
+  - gap annotation must be a vertical double-headed arrow AT the trough model
+    (Llama, 78.6): anchoring it anywhere else labels the wrong gap
 
 Run:  .venv/bin/python scripts/regenerate_schema_validity.py
 """
@@ -58,9 +64,19 @@ x = list(range(len(MODELS)))
 ys = {d: np.array([rates[(m, d)] for m, _, _ in MODELS]) for d in DECODERS}
 
 fig, ax = plt.subplots(figsize=(4.2, 3.4))
-for d in DECODERS:
-    ax.plot(x, ys[d], marker="o", markersize=4.5, linewidth=1.6,
-            color=COLORS[d], label=d.capitalize())
+# draw order matters: Outlines and Xgrammar coincide at 100% everywhere, so the
+# dashed Outlines line is drawn LAST to stay visible on top of solid Xgrammar
+ax.plot(x, ys["native"], marker="o", markersize=4.5, linewidth=1.6,
+        color=COLORS["native"], label="Native")
+ax.plot(x, ys["xgrammar"], linewidth=1.6, color=COLORS["xgrammar"],
+        label="XGrammar")  # line only; markers drawn last, nested in the rings
+ax.plot(x, ys["outlines"], marker="o", markersize=6.5, linewidth=1.8,
+        linestyle=(0, (6, 3)), color=COLORS["outlines"],
+        markerfacecolor="white", label="Outlines")
+# green squares drawn LAST and sized to nest inside the blue rings: both CD
+# series coincide at 100%, and ring-around-square shows both at one point
+ax.plot(x, ys["xgrammar"], linestyle="none", marker="s", markersize=3.8,
+        color=COLORS["xgrammar"], zorder=5)
 
 ax.set_xticks(x)
 ax.set_xticklabels([label for _, label, _ in MODELS], fontsize=8)
@@ -72,13 +88,20 @@ ax.set_ylabel("Schema validity (%)", fontsize=9)
 ax.tick_params(labelsize=8)
 ax.grid(True, axis="y", alpha=0.25, linewidth=0.5)
 
-# annotate the native gap (categorical x: index 3 = Phi-4-mini at 92.9)
-ax.annotate("21.4pp gap", xy=(3, 92.9), xytext=(0.65, 74.5),
-            fontsize=8, color=COLORS["native"],
-            arrowprops=dict(arrowstyle="-", color=COLORS["native"],
-                            linewidth=0.8, shrinkA=0, shrinkB=2))
+# annotate the native->CD gap where it actually occurs: the Llama trough
+# (100 - 78.6 = 21.4pp). Vertical double-headed arrow at Llama-3B spanning
+# native (78.6) to the CD lines (100); label sits in the empty region
+# between the two Llama models.
+ax.annotate("", xy=(2, 100), xytext=(2, 78.6),
+            arrowprops=dict(arrowstyle="<->", color=COLORS["native"],
+                            linewidth=0.9, shrinkA=3, shrinkB=3))
+ax.text(1.88, 89.3, "21.4pp gap", ha="right", va="center",
+        fontsize=8, color=COLORS["native"])
 
-ax.legend(loc="upper center", bbox_to_anchor=(0.5, -0.22), ncol=3,
+handles, labels = ax.get_legend_handles_labels()
+order = [labels.index("Native"), labels.index("Outlines"), labels.index("XGrammar")]
+ax.legend([handles[i] for i in order], [labels[i] for i in order],
+          loc="upper center", bbox_to_anchor=(0.5, -0.22), ncol=3,
           frameon=False, fontsize=8, handletextpad=0.4, columnspacing=1.2)
 
 fig.tight_layout()

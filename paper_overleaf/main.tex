@@ -259,7 +259,7 @@ Instruction-semantic & Missing call & Resistant \\
 \begin{figure}[tbp]
 \centering
 \includegraphics[width=0.95\columnwidth]{figures/fig1_schema_validity.pdf}
-\caption{Schema validity rate vs.~model size. CD flattens the structural scaling curve to 100\% across all models. Native decoding (red) shows the baseline failure rate; both CD frameworks (blue, green) eliminate all structural failures.}
+\caption{Schema validity rate vs.~model size. CD flattens the structural scaling curve to 100\% across all models. Native decoding (red) shows the baseline failure rate; both CD frameworks (blue, green) eliminate all structural failures (the two CD lines coincide at 100\%).}
 \label{fig:schema-curve}
 \end{figure}
 
@@ -285,14 +285,13 @@ Phi-4-mini & 92.9\% & \textbf{100\%} & \textbf{100\%} \\
 
 % CD overhead paragraph
 Figure~\ref{fig:overhead} compares the compilation overhead and throughput impact of both frameworks.
-XGrammar adds negligible overhead: 4--8\,ms compilation time and 2--4\% throughput reduction across models.
-Outlines incurs significant per-schema compilation cost: 1.5--4.9\,s average, peaking at 19.5\,s on complex schemas (Phi-4-mini tokenizer).
-Both frameworks preserve generation throughput once compiled.
+XGrammar adds negligible overhead: 4--8\,ms schema compilation and 1.6--3.7\% throughput reduction (Qwen-4B shows $+8\%$, within single-run variance).
+Outlines incurs significant per-schema compilation cost---2.0--4.9\,s average per model, peaking at 19.5\,s on the most complex schema (Phi-4-mini tokenizer)---and its per-token FSM masking costs a further 9--13\% generation throughput on four of five models.
 
 \begin{figure}[tbp]
 \centering
 \includegraphics[width=0.95\columnwidth]{figures/fig4_overhead.pdf}
-\caption{CD framework overhead. (a) Schema compilation time: XGrammar is near-zero ($<$10\,ms); Outlines ranges from 1.5--4.9\,s average. (b) Generation throughput is preserved across all conditions.}
+\caption{CD framework overhead. (a)~Schema compilation time (log scale; whiskers span min--max across the 14 schemas): XGrammar compiles in 4--8\,ms; Outlines averages 2.0--4.9\,s per model, peaking at 19.5\,s. (b)~Generation throughput (labels: change vs.~native): XGrammar tracks native within $\sim$4\%; Outlines runs 9--13\% slower on four of five models.}
 \label{fig:overhead}
 \end{figure}
 
