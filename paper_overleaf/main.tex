@@ -41,9 +41,6 @@
 % ABSTRACT
 %==============================================================================
 \begin{abstract}
-% Write last. Formula: Context + Problem + Method + Key finding + Implication
-% ~150 words
-%
 Small open-source large language models (LLMs) in the 0.6B--4B parameter range are increasingly deployed for structured output generation (JSON, function calling, data extraction), yet little is known about how \cd{} (CD) interacts with model scale in this regime.
 We benchmark five models from three families across 14 structured-output tasks under three decoding conditions (native, Outlines, XGrammar).
 We introduce a two-axis evaluation that separates \emph{structural correctness} (schema validity) from \emph{semantic correctness} (content accuracy).
@@ -61,7 +58,6 @@ Schema conformance is necessary but not sufficient for semantic correctness; CD'
 Small open-source LLMs---Qwen3, Llama~3.2, Phi-4-mini---are increasingly deployed on consumer hardware for structured output generation: API responses, function calling, and data extraction.
 These models offer significant cost and latency advantages over larger alternatives, but they frequently produce structurally invalid output: type coercions (prices as strings instead of numbers), missing required fields, and malformed JSON.
 
-% Problem: CD promises to fix this, but does it actually fix the OUTPUT?
 \CD{} (CD) frameworks---Outlines \citep{willard2023efficient}, XGrammar \citep{dong2024xgrammar}---promise to eliminate these failures by masking invalid tokens at each decoding step, guaranteeing schema-valid output.
 But this raises a question: does CD actually make model output \emph{correct}, or merely well-\emph{formatted}?
 If a model fails to generate a required function call because it does not understand the task, forcing it to produce schema-valid JSON will not fix the underlying misunderstanding.
