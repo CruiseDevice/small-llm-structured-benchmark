@@ -1,0 +1,8 @@
+# LaTeX build artifacts
+paper_overleaf/main.aux
+paper_overleaf/main.bbl
+paper_overleaf/main.blg
+paper_overleaf/main.log
+# OS / editor noise
+.DS_Store
+paper_overleaf/_preview/

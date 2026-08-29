@@ -103,7 +103,7 @@ Our contributions are:
 % Renze & Guven: temperature × accuracy, no structured output
 \citet{geng2025jsonschemabench} introduce JSONSchemaBench, evaluating six CD frameworks on structured output tasks.
 However, their evaluation uses a single model size and focuses on framework efficiency rather than the interaction between CD and model scale.
-Separate work studies output consistency for structured generation under varying temperature \citep{sted2024} and temperature effects on general problem-solving accuracy \citep{renze2024temperature}, but neither considers constrained decoding or model scale.
+Separate work studies output consistency for structured generation under varying temperature \citep{sted2025} and temperature effects on general problem-solving accuracy \citep{renze2024temperature}, but neither considers constrained decoding or model scale.
 
 The closest work to ours studies the \emph{semantic} cost of constrained decoding, but from complementary angles. \citet{reddy2026dccd} observe that CD can push generation toward ``locally valid yet semantically incorrect'' trajectories---the same semantic gap we identify---but treat it as a premise to be mitigated, proposing draft-conditioned decoding to repair it, rather than measuring its magnitude or interaction with model scale. \citet{galeone2026correct} report a related reliability gap for 7--9B models on mathematical benchmarks, where CD enforces validity but degrades task accuracy and adds latency; their focus is prompting strategies as a remedy, and the trade-off they observe is efficiency, not the structural--semantic decomposition. Neither work separates structural from semantic correctness along a controlled size ladder, nor identifies the failure archetypes that determine whether CD can rescue an output.
 
@@ -140,7 +140,7 @@ Galeone et al.\ \citep{galeone2026correct} & \checkmark & $\times$ & Prompting r
 \subsection{Models}
 \label{sec:models}
 
-We select five models representing three families and a controlled size range (0.6B--4B): Qwen3 \citep{qwen3technical}, Llama~3.2 \citep{llama32}, and Phi-4-mini \citep{phi4}.
+We select five models representing three families and a controlled size range (0.6B--4B): Qwen3 \citep{qwen3technical}, Llama~3.2 \citep{llama32}, and Phi-4-mini \citep{phi4mini}.
 These are the Phase~2 subset with characterized failure modes from our preliminary baseline study---not a convenience sample.
 
 \begin{table}[h]
@@ -381,10 +381,8 @@ Future work should extend to MoE architectures, real-world schemas, and richer s
 %==============================================================================
 % REFERENCES
 %==============================================================================
-\bibliographystyle{acl_natbib}
+% \bibliographystyle{acl_natbib} is issued by acl.sty (line 195); declaring it
+% here too triggers BibTeX's "Illegal, another \bibstyle command" error.
 \bibliography{custom}
-
-% Placeholder references until you create custom.bib
-% \todo{Create custom.bib with all references from PAPER\_OUTLINE.md}
 
 \end{document}
