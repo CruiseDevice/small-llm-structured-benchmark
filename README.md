@@ -2,6 +2,11 @@
 
 A systematic benchmark of open-source LLMs (0.6B–24B) for production structured output generation.
 
+> **This repository is the code and task suite accompanying the paper
+> "Can Small LLMs Follow Instructions? A Systematic Benchmark of Open-Source
+> Models for Production Structured Output Generation" (Chavan, 2026).**
+> The frozen state matching the submitted paper is tagged `v1.0`.
+
 ## What this benchmarks
 
 - JSON generation from natural language prompts

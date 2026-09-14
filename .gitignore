@@ -6,3 +6,12 @@ paper_overleaf/main.log
 # OS / editor noise
 .DS_Store
 paper_overleaf/_preview/
+
+# Local-only strategy docs — never commit
+ENDORSEMENT_OUTREACH.md
+ARR_OCTOBER_CHECKLIST.md
+backups/
+paper.zip
+paper_overleaf/arxiv_pkg/
+paper_overleaf/*.pdf
+paper_overleaf/Chavan_ConstrainedDecoding_SmallLLMs.pdf
