@@ -25,21 +25,55 @@ Existing benchmarks evaluate constrained-decoding frameworks on large models, an
 
 This question is only answerable with a controlled size ladder (e.g., Qwen 0.6B→4B, Llama 1B→3B, Gemma E2B→12B) and a shared task set — the two ingredients no prior work combines.
 
+## How the benchmark is organized
+
+The experiment is **notebook-driven**. Each model has one self-contained notebook
+per phase: it embeds the 14-task suite inline, loads the model, runs the conditions
+for that phase, scores the outputs, and writes the per-model CSV (plus a raw-output
+JSON dump) into `results/`. Notebooks were executed on rented cloud GPUs using the
+Docker image in this repo. Paper figures are rebuilt from the result CSVs by the
+scripts in `scripts/`, each with pinned assertions against the published values.
+
+## Repository layout
+
+```
+├── tasks/task_definitions.py    # The 14-task suite (canonical copy; also embedded
+│                                #   inline in each notebook)
+├── notebooks/                   # Execution notebooks, one per model per phase
+│   ├── phase1/                  # 11 models × 14 tasks × 1 greedy sample
+│   ├── phase2/                  # 6 models × 14 tasks × 3 temps × 3 samples
+│   ├── phase3/                  # 5 models × 14 tasks × 3 decoding conditions
+│   └── NOTEBOOK_SPEC.md         # Standardized notebook structure
+├── evaluation/evaluator.py      # Reference implementation of the scoring semantics
+│                                #   (validity, schema compliance, content accuracy);
+│                                #   notebooks embed equivalent scoring inline
+├── results/v2/                  # Per-model CSVs + raw generation JSONs per phase,
+│                                #   plus the phase-3 semantic evaluation outputs
+├── scripts/                     # Figure regeneration scripts (one per paper figure)
+├── config/models.yaml           # Model configurations
+├── Dockerfile                   # CUDA 12.4 image used for the cloud runs
+├── build-image.sh               # Build & push the image
+├── docs/                        # Working research notes from the experimental
+│                                #   phases (kept for provenance, not maintained docs)
+├── archive/                     # Superseded first-pass (v1) notebooks and results
+└── paper_overleaf/              # LaTeX source of the paper
+```
+
 ## Models tested
 
-| Model | Parameters | Type | Phase 1 status | Phase 3 status |
-|-------|-----------|------|----------------|----------------|
-| Qwen3-0.6B | 0.6B | Dense | ✅ complete | ✅ complete |
-| Qwen3-1.7B | 1.7B | Dense | ✅ complete | ⏳ pending |
-| Qwen3-4B-Instruct | 4B | Dense | ✅ complete | ✅ complete |
-| Qwen3-30B-A3B | 30B (3B active) | MoE | ✅ complete | ⏳ pending |
-| Gemma 4 E2B-it | ~5B (2B active) | MoE | ✅ complete | ⏳ pending |
-| Gemma 4 12B-it | ~25B (12B active) | MoE | ✅ complete | ⏳ pending |
-| Gemma 3n 2B E2B | ~5B (2B active) | MoE | ✅ complete | ⏳ pending |
-| Llama 3.2 1B-Instruct | 1B | Dense | ✅ complete | ✅ complete |
-| Llama 3.2 3B-Instruct | 3B | Dense | ✅ complete | ✅ complete |
-| Phi-4-mini | 3.8B | Dense | ✅ complete | ✅ complete |
-| Mistral-Small-3.2 24B | 24B | Dense (reference) | ✅ complete | ⏳ pending |
+| Model | Parameters | Type |
+|-------|-----------|------|
+| Qwen3-0.6B | 0.6B | Dense |
+| Qwen3-1.7B | 1.7B | Dense |
+| Qwen3-4B-Instruct | 4B | Dense |
+| Qwen3-30B-A3B | 30B (3B active) | MoE |
+| Gemma 4 E2B-it | ~5B (2B active) | MoE |
+| Gemma 4 12B-it | ~25B (12B active) | MoE |
+| Gemma 3n 2B E2B | ~5B (2B active) | MoE |
+| Llama 3.2 1B-Instruct | 1B | Dense |
+| Llama 3.2 3B-Instruct | 3B | Dense |
+| Phi-4-mini | 3.8B | Dense |
+| Mistral-Small-3.2 24B | 24B | Dense (reference) |
 
 ## Phases
 
@@ -62,54 +96,30 @@ This question is only answerable with a controlled size ladder (e.g., Qwen 0.6B�
 
 ```bash
 pip install -r requirements.txt
-```
 
-For Phase 3 constrained decoding, install the framework extras:
-
-```bash
-pip install outlines xgrammar lm-format-enforcer
+# Phase 3 constrained decoding additionally requires:
+pip install outlines xgrammar
 ```
 
 ## Usage
 
+Run a model's notebook for the phase you want (see `notebooks/NOTEBOOK_SPEC.md`
+for the standardized cell structure). Each notebook writes its results into
+`results/v2/phase*/`.
+
+To reproduce on a cloud GPU, build the image first:
+
 ```bash
-# Run full unconstrained baseline (Phase 1)
-python run_benchmark.py
-
-# Run specific model
-python run_benchmark.py --model qwen3-4b
-
-# Run with constrained decoding (Phase 3)
-python run_benchmark.py --constrained outlines
+./build-image.sh        # or: docker buildx build --platform linux/amd64 -t <user>/small-llm-benchmark .
 ```
 
-## Project Structure
+To rebuild the paper figures from the committed results:
 
-```
-.
-├── README.md
-├── requirements.txt
-├── config/
-│   └── models.yaml          # Model configurations
-├── tasks/
-│   ├── json_generation.py   # JSON generation tasks
-│   ├── schema_adherence.py  # Schema compliance tasks
-│   ├── function_calling.py  # Function calling format tasks
-│   └── extraction.py        # Key-value extraction tasks
-├── evaluation/
-│   ├── json_validator.py    # JSON validity checking
-│   ├── schema_checker.py    # Schema compliance checking
-│   ├── content_accuracy.py  # Value-level correctness
-│   └── metrics.py           # Metric calculations
-├── runners/
-│   ├── base_runner.py       # Base model runner
-│   └── constrained.py       # Constrained decoding runner
-├── analysis/
-│   └── analyze_results.py   # Result analysis and visualization
-├── notebooks/               # Per-model execution notebooks
-│   └── NOTEBOOK_SPEC.md     # Standardized notebook structure
-├── results/                 # Benchmark results (JSON/CSV)
-└── run_benchmark.py         # Main entry point
+```bash
+python scripts/regenerate_schema_validity.py    # Fig 1
+python scripts/regenerate_content_accuracy.py   # Fig 2
+python scripts/regenerate_heatmap.py            # Fig 3
+python scripts/regenerate_overhead.py           # Fig 4
 ```
 
 ## Citation
