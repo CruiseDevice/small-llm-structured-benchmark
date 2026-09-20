@@ -115,10 +115,10 @@ python run_benchmark.py --constrained outlines
 ## Citation
 
 ```bibtex
-@article{small-llm-structured-2026,
+@article{chavan2026smallllm,
   title={Can Small LLMs Follow Instructions? A Systematic Benchmark of Open-Source Models for Production Structured Output Generation},
-  author={TODO},
-  journal={arXiv preprint},
+  author={Chavan, Akash},
+  journal={arXiv preprint arXiv:2610.XXXXX},
   year={2026}
 }
 ```
