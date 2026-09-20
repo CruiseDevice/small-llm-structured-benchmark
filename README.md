@@ -1,10 +1,10 @@
-# Can Small LLMs Follow Instructions?
+# Constrained Decoding Eliminates Structural Failures in Small LLMs but Reveals a Scale-Dependent Semantic Gap
 
 A systematic benchmark of open-source LLMs (0.6B–24B) for production structured output generation.
 
 > **This repository is the code and task suite accompanying the paper
-> "Can Small LLMs Follow Instructions? A Systematic Benchmark of Open-Source
-> Models for Production Structured Output Generation" (Chavan, 2026).**
+> "Constrained Decoding Eliminates Structural Failures in Small LLMs but Reveals a
+> Scale-Dependent Semantic Gap" (Chavan, 2026).**
 > The frozen state matching the submitted paper is tagged `v1.0`.
 
 ## What this benchmarks
@@ -126,7 +126,7 @@ python scripts/regenerate_overhead.py           # Fig 4
 
 ```bibtex
 @article{chavan2026smallllm,
-  title={Can Small LLMs Follow Instructions? A Systematic Benchmark of Open-Source Models for Production Structured Output Generation},
+  title={Constrained Decoding Eliminates Structural Failures in Small LLMs but Reveals a Scale-Dependent Semantic Gap},
   author={Chavan, Akash},
   journal={arXiv preprint arXiv:2610.XXXXX},
   year={2026}
